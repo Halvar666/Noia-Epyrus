@@ -24,7 +24,6 @@ override chrome://messenger/skin/accountcentral/junk.png chrome://noiawin/skin/m
 override chrome://messenger/skin/appmenu-dropmarker.png chrome://noiawin/skin/messenger/appmenu-dropmarker.png os=WINNT
 override chrome://messenger/skin/icons/appmenu-icons.png chrome://noiawin/skin/messenger/icons/appmenu-icons.png os=WINNT
 override chrome://messenger/skin/icons/arrow-dn-inverted.png chrome://noiawin/skin/messenger/icons/arrow-dn-inverted.png os=WINNT
-override chrome://messenger/skin/icons/caption-buttons.svg chrome://noiawin/skin/messenger/icons/caption-buttons.svg os=WINNT
 override chrome://messenger/skin/icons/quick-search-icons.png chrome://noiawin/skin/messenger/icons/quick-search-icons.png os=WINNT
 override chrome://messenger/skin/icons/toolbarbutton-arrow-inverted.svg chrome://noiawin/skin/messenger/icons/toolbarbutton-arrow-inverted.svg os=WINNT
 override chrome://messenger/skin/icons/toolbarbutton-arrow.svg chrome://noiawin/skin/messenger/icons/toolbarbutton-arrow.svg os=WINNT
