@@ -1,0 +1,220 @@
+{
+  "packages": [
+    {
+      "package": "global",
+      "same_files": 560,
+      "different_files": 0,
+      "linux_only": 0,
+      "windows_only": 8
+    },
+    {
+      "package": "mozapps",
+      "same_files": 130,
+      "different_files": 0,
+      "linux_only": 0,
+      "windows_only": 2
+    },
+    {
+      "package": "communicator",
+      "same_files": 18,
+      "different_files": 0,
+      "linux_only": 0,
+      "windows_only": 0
+    },
+    {
+      "package": "editor",
+      "same_files": 7,
+      "different_files": 0,
+      "linux_only": 0,
+      "windows_only": 0
+    },
+    {
+      "package": "messenger",
+      "same_files": 320,
+      "different_files": 3,
+      "linux_only": 0,
+      "windows_only": 10
+    },
+    {
+      "package": "messenger-newsblog",
+      "same_files": 3,
+      "different_files": 0,
+      "linux_only": 0,
+      "windows_only": 0
+    },
+    {
+      "package": "calendar",
+      "same_files": 4,
+      "different_files": 10,
+      "linux_only": 0,
+      "windows_only": 1
+    },
+    {
+      "package": "lightning",
+      "same_files": 3,
+      "different_files": 2,
+      "linux_only": 0,
+      "windows_only": 3
+    }
+  ],
+  "windows_override_count": 39,
+  "raw_duplicate_bytes_removed": 2544245,
+  "overrides": [
+    {
+      "package": "global",
+      "path": "console/itemSelected.png"
+    },
+    {
+      "package": "global",
+      "path": "icons/close-inverted-win7.png"
+    },
+    {
+      "package": "global",
+      "path": "icons/close-inverted-win7@2x.png"
+    },
+    {
+      "package": "global",
+      "path": "icons/close-inverted.svg"
+    },
+    {
+      "package": "global",
+      "path": "icons/close-win7.png"
+    },
+    {
+      "package": "global",
+      "path": "icons/close-win7@2x.png"
+    },
+    {
+      "package": "global",
+      "path": "tree/twisty-preWin10.svg"
+    },
+    {
+      "package": "global",
+      "path": "tree/twisty.svg"
+    },
+    {
+      "package": "mozapps",
+      "path": "extensions/extensionGeneric-48.png"
+    },
+    {
+      "package": "mozapps",
+      "path": "plugins/pluginGeneric-48.png"
+    },
+    {
+      "package": "messenger",
+      "path": "accountcentral/junk.png"
+    },
+    {
+      "package": "messenger",
+      "path": "appmenu-dropmarker.png"
+    },
+    {
+      "package": "messenger",
+      "path": "icons/appmenu-icons.png"
+    },
+    {
+      "package": "messenger",
+      "path": "icons/arrow-dn-inverted.png"
+    },
+    {
+      "package": "messenger",
+      "path": "icons/caption-buttons.svg"
+    },
+    {
+      "package": "messenger",
+      "path": "icons/quick-search-icons.png"
+    },
+    {
+      "package": "messenger",
+      "path": "icons/toolbarbutton-arrow-inverted.svg"
+    },
+    {
+      "package": "messenger",
+      "path": "icons/toolbarbutton-arrow.svg"
+    },
+    {
+      "package": "messenger",
+      "path": "mailWindow1.css"
+    },
+    {
+      "package": "messenger",
+      "path": "messenger.css"
+    },
+    {
+      "package": "messenger",
+      "path": "primaryToolbar.css"
+    },
+    {
+      "package": "messenger",
+      "path": "tabs/arrow-left-inverted.svg"
+    },
+    {
+      "package": "messenger",
+      "path": "tabs/arrow-left.svg"
+    },
+    {
+      "package": "calendar",
+      "path": "cal-icon24.png"
+    },
+    {
+      "package": "calendar",
+      "path": "cal-icon32.png"
+    },
+    {
+      "package": "calendar",
+      "path": "calendar-event-dialog.css"
+    },
+    {
+      "package": "calendar",
+      "path": "calendar-occurrence-prompt-aero.png"
+    },
+    {
+      "package": "calendar",
+      "path": "calendar-occurrence-prompt.png"
+    },
+    {
+      "package": "calendar",
+      "path": "calendar-task-tree.css"
+    },
+    {
+      "package": "calendar",
+      "path": "calendar-task-view.css"
+    },
+    {
+      "package": "calendar",
+      "path": "calendar-unifinder.css"
+    },
+    {
+      "package": "calendar",
+      "path": "calendar-views.css"
+    },
+    {
+      "package": "calendar",
+      "path": "today-pane.css"
+    },
+    {
+      "package": "calendar",
+      "path": "widgets/calendar-widgets.css"
+    },
+    {
+      "package": "lightning",
+      "path": "imip-aero.png"
+    },
+    {
+      "package": "lightning",
+      "path": "lightning-toolbar.css"
+    },
+    {
+      "package": "lightning",
+      "path": "lightning.css"
+    },
+    {
+      "package": "lightning",
+      "path": "mode-switch-icons-aero.png"
+    },
+    {
+      "package": "lightning",
+      "path": "mode-switch-icons-inverted.png"
+    }
+  ]
+}

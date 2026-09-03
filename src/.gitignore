@@ -1,0 +1,7 @@
+/dist/
+/.build/
+*.xpi
+*.sha256
+*~
+.DS_Store
+Thumbs.db
