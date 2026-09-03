@@ -1,0 +1,409 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== messenger.css ==================================================
+  == Styles shared throughout the Messenger application.
+  ======================================================================= */
+
+@import url("chrome://global/skin/");
+@import url("chrome://messenger/content/messenger.css");
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* ::::: toolbarbuttons ::::: */
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton
+{
+  -moz-appearance : none;
+}
+  
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #composeToolbar2, #compose-toolbar-menubar2, #ab-bar2, #addrbook-toolbar-menubar2, #header-view-toolbar, #print-preview-toolbar)) toolbarbutton:not(.toolbarbutton-menubutton-button):not(:-moz-any([open="true"], [disabled="true"])):hover 
+{
+  background: url(chrome://global/skin/button/hover.png) repeat-x top left transparent;
+  border-radius : 3px;
+  border : 1px solid #808080;
+}
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #composeToolbar2, #compose-toolbar-menubar2, #ab-bar2, #addrbook-toolbar-menubar2, #header-view-toolbar, #print-preview-toolbar)) .toolbarbutton-menubutton-button:not(:-moz-any([open="true"], [disabled="true"])):hover 
+{
+  background: rgba(255, 255, 255, 0.1);
+  border : 1px solid rgba(10, 10, 10, 0.1);  
+}
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton:not([disabled="true"]):-moz-any([checked="true"], [open="true"]) 
+ {
+  background : none;
+  background-color: rgba(186, 192, 199, 0.4);
+  box-shadow: 1px 1px 2px #AFB5BE inset;
+  border-radius : 2px ;
+  -moz-border-top-colors: #999;
+  -moz-border-right-colors: #bbb;
+  -moz-border-bottom-colors: #bbb;
+  -moz-border-left-colors: #999;
+}
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton[checked="true"]:not(:active):hover {
+  background-color: rgba(90%,90%,90%,.4);
+  transition: background-color .4s;
+}
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton[open="true"]:not(:active) .toolbarbutton-menubutton-button:hover,
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton[open="true"]:not([buttonover]):not(:active):hover > .toolbarbutton-menubutton-dropmarker:not([disabled="true"]) {
+  background-color: rgba(90%,90%,90%,.6);
+  transition: background-color .4s;
+}
+
+/* :::::  ::::: */
+
+description.error {
+  color: #FF0000;
+}
+
+.toolbar-primary {
+  -moz-binding: url("chrome://global/content/bindings/toolbar.xml#toolbar");
+}
+
+toolbar[printpreview="true"] {
+  -moz-binding: url("chrome://global/content/printPreviewBindings.xml#printpreviewtoolbar");
+}
+
+#tabbar-toolbar {
+  -moz-appearance: none;
+  padding: 0;
+}
+
+#tabbar-toolbar[customizing="true"] {
+  min-width: 16px;
+  min-height: 10px;
+}
+
+/* :::::: throbber :::::::::: */
+
+#throbber-box {
+  width: 16px;
+  min-height: 16px;
+  margin: 0 3px;
+}
+
+#throbber-box[busy="true"] {
+  list-style-image: url("chrome://messenger/skin/icons/loading.png");
+}
+
+#wrapper-throbber-box > #throbber-box {
+  list-style-image: url("chrome://messenger/skin/icons/notloading.png");
+}
+
+/* ::::: online/offline icons ::::: */
+
+#offline-status[offline="true"] {
+  list-style-image: url("chrome://messenger/skin/icons/offline.png");
+}
+
+#offline-status {
+  padding: 0 2px;
+  list-style-image: url("chrome://messenger/skin/icons/online.png");
+}
+
+/* :::::         ::::::*/
+
+#searchInput,
+#IMSearchInput,
+.remote-gloda-search {
+  -moz-appearance: none;
+  border: 1px solid #A0A0A0;
+  padding : 2px 4px;
+  -moz-padding-start: 9px;
+  border-radius: 9.5pt ;
+  width: 25em;
+}
+
+#searchInput[focused="true"],
+#IMSearchInput[focused="true"],
+.remote-gloda-search[focused="true"]  {
+  background-color: white;
+}
+
+#searchInput:-moz-lwtheme:not([focused="true"]),
+#IMSearchInput:-moz-lwtheme:not([focused="true"]),
+.remote-gloda-search:-moz-lwtheme:not([focused="true"]) {
+  opacity: .85;
+}
+
+.remote-gloda-search-container {
+  padding-top: 6px;
+  padding-bottom: 5px;
+}
+
+/* ::::: Notifications ::::: */
+
+notification[value="addon-install-blocked"],
+notification[value="addon-install-complete"] {
+  background-image: url("chrome://mozapps/skin/extensions/stripes-info-negative.png"),
+                    linear-gradient(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0));
+  background-repeat: repeat-x;
+  border-top: none;
+  border-bottom: 1px solid #a0a0a0;
+}
+
+notification[value="addon-install-failed"] {
+  background-image: linear-gradient(rgb(255, 100, 100), rgb(204, 85, 85));
+}
+
+notification[value="addon-install-blocked"] .notification-inner,
+notification[value="addon-install-failed"] .notification-inner,
+notification[value="addon-install-complete"] .notification-inner {
+  border: none;
+}
+
+notification[value="addon-install-failed"] .messageCloseButton {
+  list-style-image: url("chrome://messenger/skin/icons/close-inverted.png");
+}
+
+#titlebar {
+  -moz-binding: url("chrome://global/content/bindings/general.xml#windowdragbox");
+  height: 22px;
+  -moz-window-dragging: drag;
+}
+
+@media (-moz-mac-yosemite-theme) {
+  #titlebar:not(:-moz-lwtheme) {
+    -moz-appearance: -moz-mac-vibrancy-light !important;
+  }
+
+  #tabmail {
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4) inset !important;
+    border-top: solid 1px rgba(0, 0, 0, 0.2);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+#messengerWindow[tabsintitlebar="true"] #titlebar-content {
+  margin-bottom: 0px;
+}
+
+#messengerWindow:not([tabsintitlebar="true"]) >
+#titlebar:not(:-moz-lwtheme),
+#messengerWindow[sizemode="fullscreen"]:not([tabsintitlebar="true"]) >
+#titlebar {
+  display: none;
+}
+
+#titlebar:-moz-lwtheme {
+  -moz-appearance: none;
+}
+
+/* ::::: Tabs in Titlebar :::::: */
+
+#messengerWindow[tabsintitlebar="true"]:not(:-moz-lwtheme) > #titlebar {
+  -moz-appearance: -moz-window-titlebar;
+}
+
+/* We modify the .tabs-alltabs-button to make it seem like a titlebar button */
+#messengerWindow[tabsintitlebar="true"]:not([sizemode="fullscreen"]) >
+  #navigation-toolbox > #tabs-toolbar  > .tabs-alltabs-button {
+  margin-bottom: 8px;
+  opacity: .8;
+}
+
+#messengerWindow[tabsintitlebar="true"]:not([sizemode="fullscreen"]) >
+  #navigation-toolbox > #tabs-toolbar  > .tabs-alltabs-button:hover {
+  opacity: 1;
+}
+
+#messengerWindow[tabsintitlebar="true"]:not([sizemode="fullscreen"]):-moz-window-inactive >
+  #navigation-toolbox > #tabs-toolbar  > .tabs-alltabs-button {
+  opacity: .5;
+}
+
+#messengerWindow:not([tabsintitlebar]) #titlebar-buttonbox-container {
+  margin-top: 3px;
+  -moz-margin-start: 7px;
+}
+
+#messengerWindow[tabsintitlebar="true"] #titlebar-buttonbox-container,
+#messengerWindow[tabsintitlebar="true"] #titlebar-fullscreen-button {
+  position: relative;
+  margin-top: 11px;
+  margin-bottom: 3px;
+  padding-bottom: 0px;
+}
+
+@media (-moz-mac-yosemite-theme) {
+  #messengerWindow[tabsintitlebar="true"][sizemode="fullscreen"] #titlebar-buttonbox-container,
+  #messengerWindow[tabsintitlebar="true"][sizemode="fullscreen"] #titlebar-fullscreen-button {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 14px;
+  }
+}
+
+#messengerWindow[tabsintitlebar="true"] #titlebar-spacer {
+  pointer-events: none;
+}
+
+#messengerWindow:not([tabsintitlebar]) .titlebar-placeholder {
+  visibility: collapse;
+}
+
+/* NB: these would be -moz-margin-start/end if it wasn't for the fact that OS X
+ * doesn't reverse the order of the items in the titlebar in RTL mode. */
+#messengerWindow[tabsintitlebar="true"] .titlebar-placeholder[type="caption-buttons"],
+#messengerWindow[tabsintitlebar="true"] #titlebar-buttonbox {
+  margin-left: 7px;
+}
+
+@media (-moz-mac-lion-theme) {
+  #messengerWindow[tabsintitlebar="true"] .titlebar-placeholder[type="fullscreen-button"] {
+    margin-right: 7px;
+  }
+
+  #titlebar-fullscreen-button {
+    -moz-appearance: -moz-mac-fullscreen-button;
+    margin-right: 7px;
+  }
+}
+
+#titlebar-buttonbox {
+  -moz-appearance: -moz-window-button-box;
+}
+
+/* Because these buttons don't move, they should always be aligned the same,
+ * left and right were deprecated, so we have to do work to get it to mean that: */
+#titlebar-buttonbox-container:-moz-locale-dir(ltr) {
+  -moz-box-align: start;
+}
+
+#titlebar-buttonbox-container:-moz-locale-dir(rtl) {
+  -moz-box-align: end;
+}
+
+/* Fullscreen and caption buttons don't move with RTL on OS X so override the automatic ordering. */
+#titlebar-fullscreen-button:-moz-locale-dir(ltr),
+#titlebar-buttonbox-container:-moz-locale-dir(rtl),
+.titlebar-placeholder[type="fullscreen-button"]:-moz-locale-dir(ltr),
+.titlebar-placeholder[type="caption-buttons"]:-moz-locale-dir(rtl) {
+  -moz-box-ordinal-group: 1000;
+}
+
+#titlebar-fullscreen-button:-moz-locale-dir(rtl),
+#titlebar-buttonbox-container:-moz-locale-dir(ltr),
+.titlebar-placeholder[type="caption-buttons"]:-moz-locale-dir(ltr),
+.titlebar-placeholder[type="fullscreen-button"]:-moz-locale-dir(rtl) {
+  -moz-box-ordinal-group: 0;
+}
+
+#messengerWindow[sizemode="fullscreen"] .titlebar-placeholder[type="fullscreen-button"],
+#messengerWindow[sizemode="fullscreen"] .titlebar-placeholder[type="caption-buttons"] {
+  display: none;
+}
+
+/* :::::: throbber :::::::::: */
+
+#throbber-box {
+  width: 17px;
+  margin: 0 4px;
+}
+
+@media (min-resolution: 2dppx) {
+  #wrapper-throbber-box > #throbber-box {
+    list-style-image: url("chrome://messenger/skin/icons/loading@2x.png");
+  }
+}
+
+/* ::::: online/offline icons ::::: */
+
+#offline-status {
+  -moz-padding-start: 3px;
+}
+
+@media (min-resolution: 2dppx) {
+  #offline-status[offline="true"] {
+    list-style-image: url("chrome://messenger/skin/icons/offline@2x.png");
+  }
+
+  #offline-status {
+    list-style-image: url("chrome://messenger/skin/icons/online@2x.png");
+  }
+
+  #offline-status > .statusbarpanel-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ::::: directional button icons ::::: */
+
+.up {
+  min-width: 0px;
+  list-style-image: url("chrome://global/skin/arrow/arrow-up.gif");
+}
+
+.up[disabled="true"] {
+  list-style-image: url("chrome://global/skin/arrow/arrow-up-dis.gif");
+}
+
+.down {
+  min-width: 0px;
+  list-style-image: url("chrome://global/skin/arrow/arrow-dn.gif");
+}
+
+.down[disabled="true"] {
+  list-style-image: url("chrome://global/skin/arrow/arrow-dn-dis.gif");
+}
+
+/* ::::: Tabs ::::: */
+
+tabmail > tabbox {
+  margin: 0;
+}
+
+#status-bar:-moz-lwtheme  {
+  padding-top: 1px;
+}
+
+treechildren::-moz-tree-cell-text {
+  -moz-padding-start: 2px;
+}
+
+/* ::::: Notifications ::::: */
+
+notification[value="addon-install-complete"] {
+  color: black;
+  background-color: #ADB5C3;
+}
+
+notification[value="addon-install-blocked"] > button,
+notification[value="addon-install-failed"] > button,
+notification[value="addon-install-complete"] > button {
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(60, 73, 97, 0.5);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.25),
+              0 1px rgba(255, 255, 255, 0.25);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.45),
+                                    rgba(255, 255, 255, 0.2));
+  background-clip: padding-box;
+  color: #252F3B;
+}
+
+notification[value="addon-install-blocked"] > button:active:hover,
+notification[value="addon-install-failed"] > button:active:hover,
+notification[value="addon-install-complete"] > button:active:hover {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2),
+              0 1px rgba(255, 255, 255, 0.25);
+  background-color: transparent;
+  background-image: linear-gradient(rgba(45, 54, 71, 0.3),
+                                    rgba(45, 54, 71, 0.1));
+  border-color: rgba(60, 73, 97, 0.7);
+}
+
+@media (min-resolution: 2dppx) {
+  notification[value="addon-install-failed"] .messageCloseButton {
+    list-style-image: url("chrome://messenger/skin/icons/close-inverted@2x.png");
+  }
+}
+
+#quick-filter-bar-main-bar {
+  background : #d4d4d4 !important;
+}

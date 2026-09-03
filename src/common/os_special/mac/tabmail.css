@@ -1,0 +1,35 @@
+.tabmail-tab:hover > .tab-stack > .tab-background:not([selected=true]),
+.tab-background[selected=true] {
+  background-repeat: no-repeat,
+                     no-repeat,
+                     no-repeat;
+  background-position: left 0,
+                       30px 0,
+                       right 0;
+  background-size: 30px 100%,
+                   calc(100% - 60px) 100%,
+                   30px 100%;
+}
+
+.tab-background[selected=true] {
+  background-size: 30px 100%,
+                   calc(100% - 59px) 100%,
+                   30px 100%;
+}
+
+/* preloading hack: the images used for tab borders need to be
+preloaded to avoid flickering the first time a non-selected tab is
+opened / hovered. */
+#tabs-toolbar::after {
+  content: '';
+  display: block;
+  background-image: url("chrome://messenger/skin/tabs/backgroundStart.png"),
+                    url("chrome://messenger/skin/tabs/backgroundMiddle.png"),
+                    url("chrome://messenger/skin/tabs/backgroundEnd.png"),
+                    url("chrome://messenger/skin/tabs/activeStart.png"),
+                    url("chrome://messenger/skin/tabs/activeMiddle.png"),
+                    url("chrome://messenger/skin/tabs/activeEnd.png"),
+                    url("chrome://messenger/skin/tabs/start.png"),
+                    url("chrome://messenger/skin/tabs/middle.png"),
+                    url("chrome://messenger/skin/tabs/end.png");
+}

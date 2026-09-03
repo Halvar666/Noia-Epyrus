@@ -1,0 +1,86 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* We want a 4px gap between the tabs-toolbar and the mail-toolbar-menubar2
+   when the toolbar-menu is displayed, and a 16px gap when it is not. 1px is
+   taken care of by the (light) outer shadow of the tab, the remaining 15/15
+   are these margins. */
+#mail-toolbar-menubar2:not([autohide="true"]) ~ #tabs-toolbar,
+#mail-toolbar-menubar2[autohide="true"]:not([inactive]) ~ #tabs-toolbar {
+  margin-top: 3px;
+}
+
+#messengerWindow[tabsintitlebar][sizemode="normal"]
+#mail-toolbar-menubar2[autohide="true"][inactive] ~ #tabs-toolbar {
+  margin-top: 15px;
+}
+
+#messengerWindow[tabsintitlebar][sizemode="maximized"] #mail-toolbar-menubar2 {
+  padding-top: 12px;
+}
+
+#messengerWindow[tabsintitlebar][sizemode="maximized"]
+#mail-toolbar-menubar2[autohide="true"][inactive] ~ #tabs-toolbar {
+  margin-top: 15px;
+}
+
+/* :::: Toolbar :::: */
+
+.mail-toolbox:not(:-moz-lwtheme),
+#navigation-toolbox:not(:-moz-lwtheme),
+.contentTabToolbox:not(:-moz-lwtheme) {
+  -moz-appearance: none;
+  border-top: none;
+  background-color: #dadce4;
+}
+
+#navigation-toolbox {
+  background-color: transparent !important;
+}
+
+.mail-toolbox,
+.contentTabToolbox {
+  border-bottom: 1px solid #A0A0A0;
+}
+
+.mail-toolbox > toolbar {
+  -moz-margin-start: 0;
+  border-bottom: none;
+}
+
+.mail-toolbox > toolbar:not(:-moz-lwtheme),
+#navigation-toolbox > toolbar:not(:-moz-lwtheme),
+.contentTabToolbox:not(:-moz-lwtheme) > toolbar:not(:-moz-lwtheme) {
+  -moz-appearance: none;
+  border-style: none;
+  background-color: transparent;
+}
+
+#navigation-toolbox #tabs-toolbar:not(:-moz-lwtheme) {
+  border-bottom: 1px solid rgba(10, 31, 51, .35);
+}
+
+#navigation-toolbox #tabs-toolbar:-moz-lwtheme {
+  border-bottom: 1px solid transparent;
+}
+
+.mail-toolbox:-moz-lwtheme,
+.contentTabToolbox:-moz-lwtheme {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5),
+                    rgba(255, 255, 255, 0) 28px) !important;
+}
+
+#mail-bar3 {
+  padding: 1px 0;
+}
+
+.mail-toolbox:not(:-moz-lwtheme),
+.contentTabToolbox:not(:-moz-lwtheme) {
+  background-image: linear-gradient(rgba(255, 255, 255, .5),
+                    rgba(255, 255, 255, 0));
+}
+
+.chromeclass-toolbar {
+  /* Toolbar buttons have a margin of 3px; adjust the toolbar so the leftmost
+     button lines up with the rest of the window. */
+  -moz-margin-start: -3px;
+}

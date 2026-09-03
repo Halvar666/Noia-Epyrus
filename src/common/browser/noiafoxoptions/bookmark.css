@@ -1,0 +1,8 @@
+#PlacesToolbarItems .toolbarbutton-text { 
+  display : none !important 
+}
+
+#PlacesToolbarItems toolbarbutton  { 
+  -moz-padding-start : 5px !important; 
+  -moz-padding-end : 0px !important; 
+}

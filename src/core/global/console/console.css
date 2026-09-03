@@ -1,0 +1,178 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#ToolbarMode toolbarbutton
+{
+  -moz-appearance : none;
+}
+  
+#ToolbarMode toolbarbutton:not(:-moz-any([open], [disabled="true"])):hover 
+{
+  background: url(chrome://global/skin/button/hover.png) repeat-x top left transparent;
+  border-radius : 3px;
+  border : 1px solid #808080;
+}
+
+#ToolbarMode .toolbarbutton-menubutton-button:not(:-moz-any([open], [disabled="true"])):hover 
+{
+  border : 1px solid rgba(10, 10, 10, 0.1);  
+}
+
+#ToolbarMode toolbarbutton:not([disabled="true"]):-moz-any([checked="true"], [open]) 
+ {
+  background : none;
+  background-color: rgba(186, 192, 199, 0.4);
+  box-shadow: 1px 1px 2px #AFB5BE inset;
+  border-radius : 2px ;
+  -moz-border-top-colors: #999;
+  -moz-border-right-colors: #bbb;
+  -moz-border-bottom-colors: #bbb;
+  -moz-border-left-colors: #999;
+}
+
+.console-box {
+  color: #000;
+  background-color: #f8f8f8;
+  border-top: 1px solid #808080 !important;
+}
+
+/* console rows */
+
+.console-row {
+  padding: 4px 0px;
+  border-bottom: 1px dotted #a0a0a0;
+}
+
+.console-row-icon {
+  padding: 4px;
+  -moz-padding-start: 5px;
+  -moz-box-align: start !important;
+}
+
+.console-row-msg > label:first-child,
+.console-row-file > label:first-child {
+  display: none;
+}
+
+.console-time {
+  font-weight: normal !important;
+}
+
+.console-icon {
+  list-style-image: inherit;
+}
+
+.console-error-msg {
+  margin-bottom: 2px;
+}
+
+/* error rows */
+
+.console-row-code {
+  color: #0066CC;
+  font-size: larger;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  -moz-padding-start: 3px;
+  -moz-padding-end: 0px;
+}
+
+.console-dots,
+.console-caret {
+  height: 9px;
+}
+
+.console-dots {
+  background: url(chrome://global/skin/console/error-dash.gif) repeat-x top;
+}
+
+.console-caret {
+  width: 7px;
+  background: url(chrome://global/skin/console/error-caret.gif) no-repeat top;
+}
+
+/* message rows */
+
+.console-row[type="message"] {
+  font-family: monospace;
+}
+
+/* selected state */
+
+.console-row:hover {
+  background-color: #F0F0F0;
+}
+
+.console-row[selected="true"]  {
+  background-color: #E6EDF6;
+}
+
+.console-row-code[selected="true"],
+.console-row-content[selected="true"] > .console-row-file > .console-error-source > .text-link {
+
+}
+
+/* icons */
+
+.console-row[type="error"],
+.console-row[type="exception"] {
+  list-style-image: url("chrome://global/skin/icons/error-16.png");
+}
+
+.console-row[type="error"] .console-row-msg,
+.console-row[type="exception"] .console-row-msg {
+  font-weight: bold;
+}
+
+.console-row[type="warning"] {
+  list-style-image: url("chrome://global/skin/icons/warning-16.png");
+}
+
+.console-row[type="message"] {
+  list-style-image: url("chrome://global/skin/icons/information-16.png");
+}
+
+/* ::::: toolbars ::::: */
+
+toolbar#ToolbarMode toolbarbutton {
+  padding: 2px;
+  margin: 3px;
+}
+
+#Console\:modeAll {
+  list-style-image: url(chrome://browser/skin/icons/console.png);
+}
+
+#Console\:modeErrors {
+  list-style-image: url(chrome://browser/skin/icons/alert-error.png);
+}
+
+#Console\:modeWarnings {
+  list-style-image: url(chrome://browser/skin/icons/alert-warning.png);
+}
+
+#Console\:modeMessages {
+  list-style-image: url(chrome://browser/skin/icons/alert-message.png);
+}
+
+#Console\:clear {
+  list-style-image: url(chrome://browser/skin/icons/eraser.png);
+ }
+
+/* toolbars */
+
+#TextboxEval {
+  margin: 2px;
+}
+
+#ButtonEval {
+  margin: 2px 2px 2px 0;
+}
+
+toolbarseparator {
+  min-height: 1em;
+}
+
+toolbarbutton .toolbarbutton-text {
+padding-left : 5px;
+padding-right : 5px;
+}

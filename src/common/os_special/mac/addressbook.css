@@ -1,0 +1,7 @@
+#ab-bar2 {
+  margin-top: -22px;
+}
+
+#ab-bar2:-moz-lwtheme {
+  padding-top: 22px;
+}

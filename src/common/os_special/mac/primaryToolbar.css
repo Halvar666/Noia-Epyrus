@@ -1,0 +1,51 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* ::::: Mail Toolbars and Menubars ::::: */
+
+.mail-toolbox,
+.contentTabToolbox {
+  -moz-appearance: none;
+  border-bottom: 1px solid hsl(0, 0%, 60%);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.32),
+                    rgba(255, 255, 255, 0) 19px);
+}
+
+.mail-toolbox:not(:-moz-lwtheme),
+.contentTabToolbox:not(:-moz-lwtheme) {
+  background-color: #dadce4;
+  background-image: linear-gradient(hsl(0, 0%, 93%), hsl(0, 0%, 83%) 98%,
+                    hsla(0, 0%, 100%, .15));
+}
+/*
+.mail-toolbox:not(:-moz-lwtheme):-moz-window-inactive,
+.contentTabToolbox:not(:-moz-lwtheme):-moz-window-inactive {
+  background-color: -moz-mac-chrome-inactive;
+  background-image: linear-gradient(rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0) 19px);
+}
+*/
+/* Inactive window state */
+.mail-toolbox:-moz-window-inactive,
+.contentTabToolbox:-moz-window-inactive {
+  -moz-appearance: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.32);
+}
+
+.mail-toolbox:-moz-lwtheme,
+.contentTabToolbox:-moz-lwtheme {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5),
+                    rgba(255, 255, 255, 0) 28px);
+}
+
+.mail-bar3 {
+  padding: 4px 4px 0;
+}
+
+.mail-toolbox > toolbar
+.contentTabToolbox > toolbar {
+  -moz-appearance: none;
+}
+
+#navigation-toolbox > toolbar:not(:-moz-lwtheme) {
+  padding-bottom : 1px;
+}

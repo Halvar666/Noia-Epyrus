@@ -1,0 +1,14 @@
+.tabmail-tab:hover > .tab-stack > .tab-background:not([selected=true]),
+.tab-background[selected=true] {
+  background-repeat: no-repeat,
+                     no-repeat,
+                     no-repeat;
+  background-position: left 0,
+                       30px 0,
+                       right 0;
+  background-size: 30px 100%,
+                   calc(100% - 60px) 100%,
+                   30px 100%;
+}
+
+

@@ -1,0 +1,368 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== messenger.css ==================================================
+  == Styles shared throughout the Messenger application.
+  ======================================================================= */
+
+@import url("chrome://global/skin/");
+@import url("chrome://messenger/content/messenger.css");
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* ::::: toolbarbuttons ::::: */
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton
+{
+  -moz-appearance : none;
+}
+  
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #composeToolbar2, #compose-toolbar-menubar2, #ab-bar2, #addrbook-toolbar-menubar2, #header-view-toolbar, #print-preview-toolbar)) toolbarbutton:not(.toolbarbutton-menubutton-button):not(:-moz-any([open="true"], [disabled="true"])):hover 
+{
+  background: url(chrome://global/skin/button/hover.png) repeat-x top left transparent;
+  border-radius : 3px;
+  border : 1px solid #808080;
+}
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #composeToolbar2, #compose-toolbar-menubar2, #ab-bar2, #addrbook-toolbar-menubar2, #header-view-toolbar, #print-preview-toolbar)) .toolbarbutton-menubutton-button:not(:-moz-any([open="true"], [disabled="true"])):hover 
+{
+  background: rgba(255, 255, 255, 0.1);
+  border : 1px solid rgba(10, 10, 10, 0.1);  
+}
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton:not([disabled="true"]):-moz-any([checked="true"], [open="true"]) 
+ {
+  background : none;
+  background-color: rgba(186, 192, 199, 0.4);
+  box-shadow: 1px 1px 2px #AFB5BE inset;
+  border-radius : 2px ;
+  -moz-border-top-colors: #999;
+  -moz-border-right-colors: #bbb;
+  -moz-border-bottom-colors: #bbb;
+  -moz-border-left-colors: #999;
+}
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton[checked="true"]:not(:active):hover {
+  background-color: rgba(90%,90%,90%,.4);
+  transition: background-color .4s;
+}
+
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton[open="true"]:not(:active) .toolbarbutton-menubutton-button:hover,
+toolbar:not(:-moz-any(#mail-bar3, #mail-toolbar-menubar2, #tabs-toolbar, #header-view-toolbar)) toolbarbutton[open="true"]:not([buttonover]):not(:active):hover > .toolbarbutton-menubutton-dropmarker:not([disabled="true"]) {
+  background-color: rgba(90%,90%,90%,.6);
+  transition: background-color .4s;
+}
+
+/* :::::  ::::: */
+
+description.error {
+  color: #FF0000;
+}
+
+.toolbar-primary {
+  -moz-binding: url("chrome://global/content/bindings/toolbar.xml#toolbar");
+}
+
+toolbar[printpreview="true"] {
+  -moz-binding: url("chrome://global/content/printPreviewBindings.xml#printpreviewtoolbar");
+}
+
+#tabbar-toolbar {
+  -moz-appearance: none;
+  padding: 0;
+}
+
+#tabbar-toolbar[customizing="true"] {
+  min-width: 16px;
+  min-height: 10px;
+}
+
+/* :::::: throbber :::::::::: */
+
+#throbber-box {
+  width: 16px;
+  min-height: 16px;
+  margin: 0 3px;
+}
+
+#throbber-box[busy="true"] {
+  list-style-image: url("chrome://messenger/skin/icons/loading.png");
+}
+
+#wrapper-throbber-box > #throbber-box {
+  list-style-image: url("chrome://messenger/skin/icons/notloading.png");
+}
+
+/* ::::: online/offline icons ::::: */
+
+#offline-status[offline="true"] {
+  list-style-image: url("chrome://messenger/skin/icons/offline.png");
+}
+
+#offline-status {
+  padding: 0 2px;
+  list-style-image: url("chrome://messenger/skin/icons/online.png");
+}
+
+/* ::::: Notifications ::::: */
+
+notification[value="addon-install-blocked"],
+notification[value="addon-install-complete"] {
+  background-image: url("chrome://mozapps/skin/extensions/stripes-info-negative.png"),
+                    linear-gradient(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0));
+  background-repeat: repeat-x;
+  border-top: none;
+  border-bottom: 1px solid #a0a0a0;
+}
+
+notification[value="addon-install-failed"] {
+  background-image: linear-gradient(rgb(255, 100, 100), rgb(204, 85, 85));
+}
+
+notification[value="addon-install-blocked"] .notification-inner,
+notification[value="addon-install-failed"] .notification-inner,
+notification[value="addon-install-complete"] .notification-inner {
+  border: none;
+}
+
+notification[value="addon-install-failed"] .messageCloseButton {
+  list-style-image: url("chrome://messenger/skin/icons/close-inverted.png");
+}
+.toolbar-primary {
+  border-top: none;
+}
+
+.menu-iconic > .menu-iconic-left,
+.menuitem-iconic > .menu-iconic-left {
+  display: -moz-box;
+}
+
+#tabbar-toolbar {
+  border: none;
+}
+
+#tabbar-toolbar[customizing="true"] {
+  min-width: 24px;
+}
+
+/* ::::: menubar ::::: */
+
+#menubar-items {
+  -moz-box-orient: vertical; /* for flex hack */
+  margin-bottom: 1px;
+}
+
+#menubar-items > menubar {
+  -moz-box-flex: 1; /* make menu items expand to fill toolbar height */
+} 
+
+/* ::::: toolbarbutton ::::: */
+
+.toolbarbutton-1,
+.toolbarbutton-menubutton-button {
+  padding-top: 5px;
+  padding-bottom: 6px;
+  -moz-padding-start: 4px;
+  -moz-padding-end: 5px;
+}
+
+.toolbarbutton-1:hover:active:not([disabled]),
+.toolbarbutton-1[open="true"],
+.toolbarbutton-menubutton-button:hover:active:not([disabled]),
+.toolbarbutton-menubutton-button[open="true"] {
+  padding-top: 6px;
+  padding-bottom: 5px;
+  -moz-padding-start: 5px;
+  -moz-padding-end: 4px;
+}
+
+.toolbarbutton-1[checked="true"] {
+  padding-top: 6px !important;
+  padding-bottom: 5px !important;
+  -moz-padding-start: 5px !important;
+  -moz-padding-end: 4px !important;
+}
+
+.toolbarbutton-1 .toolbarbutton-icon,
+.formatting-button .toolbarbutton-icon {
+  -moz-margin-end: 0px;
+}
+
+/* Has to be !important to overrule toolkit's dropmarker.css for the
+   dropmarker[disabled="true"] case. */
+.toolbarbutton-menu-dropmarker {
+  -moz-padding-start: 3px !important;
+}
+
+toolbar[mode="full"] .toolbarbutton-1 {
+  min-width: 55px;
+}
+
+sidebarheader .toolbarbutton-text:not([value]) {
+  display: none;
+}
+
+#searchInput,
+#IMSearchInput,
+.remote-gloda-search {
+  -moz-appearance: none;
+  min-height: 22px;
+  border: 1px solid #A0A0A0;
+  -moz-padding-end: 2px;
+  -moz-padding-start: 2px;
+}
+
+#searchInput:-moz-lwtheme:not([focused="true"]),
+#IMSearchInput:-moz-lwtheme:not([focused="true"]),
+.remote-gloda-search:-moz-lwtheme:not([focused="true"]) {
+  opacity: .85;
+}
+
+.remote-gloda-search-container {
+  padding-top: 6px;
+  padding-bottom: 5px;
+}
+
+
+#status-bar:-moz-lwtheme {
+  padding-bottom: 1px;
+}
+
+#tabmail-buttons > toolbarbutton {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+treechildren::-moz-tree-cell-text {
+  -moz-padding-start: 5px;
+  padding-bottom: 2px;
+}
+
+@media not all and (-moz-windows-default-theme) {
+  treechildren::-moz-tree-cell-text {
+    -moz-padding-start: 4px !important;
+  }
+}
+
+/* ::::: Notifications ::::: */
+
+notification[value="addon-install-failed"] .messageCloseButton {
+  list-style-image: url("chrome://messenger/skin/icons/closeTab.png");
+}
+
+notification[value="addon-install-failed"] .messageCloseButton:not(:hover):not(:active) {
+  -moz-image-region: rect(0, 64px, 16px, 48px);
+}
+
+treechildren::-moz-tree-cell-text {
+  -moz-padding-start: 2px;
+}
+
+.toolbar-primary {
+  -moz-appearance: none;
+}
+
+.toolbarbutton-1[checked="true"] {
+  padding: 1px 5px !important;
+}
+
+#searchInput,
+#IMSearchInput,
+.remote-gloda-search {
+  -moz-appearance: none;
+  border: 1px solid #A0A0A0;
+  border-radius: 2px;
+  padding : 2px 4px;
+  -moz-padding-start: 9px;
+  border-radius: 9.5pt ;
+  width: 25em;
+}
+
+.remote-gloda-search-container {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+#tabmail-buttons > toolbarbutton {
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+
+@media (-moz-windows-default-theme) {
+  #searchInput,
+  #IMSearchInput,
+  .remote-gloda-search {
+    border-color: hsla(210, 54%, 20%, .3) hsla(210, 54%, 20%, .3)
+                  hsla(210, 54%, 20%, .3);
+    box-shadow: 0 1px hsla(0, 0%, 0%, .01) inset,
+                0 1px hsla(0, 0%, 100%, .1);
+  }
+
+  #searchInput:-moz-lwtheme,
+  #IMSearchInput:-moz-lwtheme,
+  .remote-gloda-search:-moz-lwtheme {
+    border-color: rgba(0, 0, 0, .32);
+    color: black;
+  }
+
+  notification[value="addon-install-blocked"],
+  notification[value="addon-install-complete"] {
+    background-image: url("chrome://mozapps/skin/extensions/stripes-info-negative.png"),
+                      linear-gradient(rgba(204, 217, 234, 0.5),
+                                      rgba(231, 237, 246, 0.8));
+  }
+}
+
+@media (-moz-windows-compositor) {
+  #unifinder-searchBox,
+  #task-addition-box {
+    border-top: none;
+    background-color: -moz-dialog;
+  }
+
+  #searchInput:not(:-moz-lwtheme),
+  #IMSearchInput:not(:-moz-lwtheme),
+  .remote-gloda-search:not(:-moz-lwtheme) {
+    border-color: hsla(210, 54%, 20%, .3) hsla(210, 54%, 20%, .3)
+                  hsla(210, 54%, 20%, .3);
+  }
+
+  #searchInput:not(:-moz-lwtheme):not([focused]):hover,
+  #IMSearchInput:not(:-moz-lwtheme):not([focused]):hover,
+  .remote-gloda-search:not(:-moz-lwtheme):not([focused]):hover {
+    border-color: hsla(210, 54%, 20%, .4) hsla(210, 54%, 20%, .4)
+                  hsla(210, 54%, 20%, .4);
+  }
+
+  #searchInput:not(:-moz-lwtheme)[focused],
+  #IMSearchInput:not(:-moz-lwtheme)[focused],
+  .remote-gloda-search:not(:-moz-lwtheme)[focused] {
+    border-color: hsla(206, 100%, 60%, .65) hsla(206, 100%, 55%, .65)
+                  hsla(206, 100%, 50%, .65);
+  }
+
+  #tabbar-toolbar #searchInput:not(:-moz-lwtheme) {
+    background-color: rgba(255, 255, 255, .725);
+    border-color: rgba(0, 0, 0, .32);
+    color: black;
+  }
+
+  #tabbar-toolbar #searchInput:not(:-moz-lwtheme):hover {
+    background-color: rgba(255, 255, 255, .898);
+  }
+
+  #tabbar-toolbar #searchInput:not(:-moz-lwtheme)[focused="true"] {
+    background-color: white;
+  }
+}
+
+@media not all and (-moz-windows-compositor) {
+  #print-preview-toolbar:not(:-moz-lwtheme) {
+    -moz-appearance: -moz-win-browsertabbar-toolbox;
+  }
+}

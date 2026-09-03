@@ -1,0 +1,188 @@
+/* flag 1 */
+
+#PanelUI-multiView[viewtype="subview"] #PanelUI-mainView > #PanelUI-contents-scroller > #PanelUI-contents > .panel-wide-item,
+#PanelUI-multiView[viewtype="subview"] #PanelUI-mainView > #PanelUI-contents-scroller > #PanelUI-contents > .toolbarbutton-1:not([panel-multiview-anchor="true"]),
+#PanelUI-multiView[viewtype="subview"] #PanelUI-mainView > #PanelUI-footer > #PanelUI-fxa-status,
+#PanelUI-multiView[viewtype="subview"] #PanelUI-mainView > #PanelUI-footer > #PanelUI-update-status,
+#PanelUI-multiView[viewtype="subview"] #PanelUI-mainView > #PanelUI-footer > #PanelUI-footer-inner > toolbarseparator,
+#PanelUI-multiView[viewtype="subview"] #PanelUI-mainView > #PanelUI-footer > #PanelUI-footer-inner > #PanelUI-customize,
+#PanelUI-multiView[viewtype="subview"] #PanelUI-mainView > #PanelUI-footer > #PanelUI-footer-inner > #PanelUI-quit,
+#PanelUI-multiView[viewtype="subview"] #PanelUI-mainView > #PanelUI-footer > #PanelUI-footer-inner > #PanelUI-help:not([panel-multiview-anchor="true"]) {
+  opacity: .2;
+}
+
+/* flag 2 */
+
+#PanelUI-footer-inner {
+  display: flex;
+  border-top: 1px solid hsla(210,4%,10%,.14);
+}
+
+#PanelUI-multiView[viewtype="subview"] #PanelUI-footer-inner {
+  position: relative;
+}
+
+#PanelUI-footer-inner > toolbarseparator {
+  border: 0;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  margin: 7px 0 7px;
+}
+
+#PanelUI-footer-inner:hover > toolbarseparator {
+  margin: 0;
+}
+
+#PanelUI-update-status,
+#PanelUI-help,
+#PanelUI-fxa-status,
+#PanelUI-customize,
+#PanelUI-quit {
+  margin: 0;
+  padding: 11px 0;
+  box-sizing: border-box;
+  min-height: 40px;
+  -moz-appearance: none;
+  box-shadow: none;
+  border: none; 
+  border-radius: 0;
+  transition: background-color;
+  -moz-box-orient: horizontal;
+}
+
+#PanelUI-update-status,
+#PanelUI-fxa-status {
+  border-top: 1px solid hsla(210,4%,10%,.14);
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
+}
+
+#PanelUI-update-status > .toolbarbutton-text,
+#PanelUI-fxa-status > .toolbarbutton-text {
+  width: 0; /* Fancy cropping solution for flexbox. */
+}
+
+#PanelUI-help,
+#PanelUI-quit {
+  min-width: 46px;
+}
+
+#PanelUI-update-status > .toolbarbutton-text,
+#PanelUI-fxa-status > .toolbarbutton-text,
+#PanelUI-customize > .toolbarbutton-text {
+  margin: 0;
+  padding: 0 6px;
+  text-align: start;
+}
+
+#PanelUI-update-status > .toolbarbutton-text,
+#PanelUI-fxa-status > .toolbarbutton-text,
+#PanelUI-customize > .toolbarbutton-text {
+  -moz-padding-start : 10px;
+}
+
+#PanelUI-help > .toolbarbutton-text,
+#PanelUI-quit > .toolbarbutton-text {
+  display: none;
+}
+
+#PanelUI-update-status > .toolbarbutton-icon,
+#PanelUI-fxa-status > .toolbarbutton-icon,
+#PanelUI-customize > .toolbarbutton-icon,
+#PanelUI-help > .toolbarbutton-icon,
+#PanelUI-quit > .toolbarbutton-icon {
+  -moz-margin-end: 0;
+}
+
+#PanelUI-fxa-status, 
+#PanelUI-customize {
+  flex: 1;
+  -moz-padding-start: 15px;
+  -moz-border-start-style: none;
+}
+
+#PanelUI-update-status {
+  width: calc(22.35em + 30px);
+  -moz-padding-start: 15px;
+  -moz-border-start-style: none;
+}
+
+#PanelUI-update-status {
+  list-style-image: url(chrome://branding/content/icon16.png);
+}
+
+#PanelUI-fxa-status {
+  list-style-image: url(chrome://browser/skin/sync-horizontalbar.png);
+}
+
+#PanelUI-fxa-status[status="active"],
+#PanelUI-fxa-status[syncstatus="active"] {
+  list-style-image: url(chrome://browser/skin/syncProgress-horizontalbar.png);
+}
+
+#PanelUI-fxa-status[fxastatus="migrate-signup"],
+#PanelUI-fxa-status[fxastatus="migrate-verify"] {
+  list-style-image: url(chrome://global/skin/icons/warning-16.png);
+}
+
+#PanelUI-customize {
+  list-style-image: url(chrome://browser/skin/menuPanel-customize.png);
+}
+
+#customization-panelHolder #PanelUI-customize {
+  list-style-image: url(chrome://browser/skin/customizableui/menuPanel-customizeFinish.png);
+}
+
+#PanelUI-help {
+  list-style-image: url(chrome://browser/skin/menuPanel-help.png);
+}
+
+#PanelUI-quit {
+  -moz-border-end-style: none;
+  list-style-image: url(chrome://browser/skin/menuPanel-exit.png);
+}
+
+#PanelUI-fxa-status,
+#PanelUI-customize,
+#PanelUI-help,
+#PanelUI-quit {
+  -moz-image-region: rect(0, 16px, 16px, 0);
+}
+
+#PanelUI-customize:hover,
+#PanelUI-help:not([disabled]):hover,
+#PanelUI-quit:not([disabled]):hover {
+  -moz-image-region: rect(0, 32px, 16px, 16px);
+}
+
+#PanelUI-customize:hover:active,
+#PanelUI-help:not([disabled]):hover:active,
+#PanelUI-quit:not([disabled]):hover:active {
+  -moz-image-region: rect(0, 48px, 16px, 32px);
+}
+
+#PanelUI-help[disabled],
+#PanelUI-quit[disabled] {
+  opacity: 0.4;
+}
+
+#PanelUI-fxa-status:not([disabled]):hover,
+#PanelUI-help:not([disabled]):hover,
+#PanelUI-customize:hover,
+#PanelUI-quit:not([disabled]):hover {
+  outline: 1px solid hsla(210,4%,10%,.07);
+  background-color: hsla(210,4%,10%,.07);
+}
+
+#PanelUI-fxa-status:not([disabled]):hover:active,
+#PanelUI-help:not([disabled]):hover:active,
+#PanelUI-customize:hover:active,
+#PanelUI-quit:not([disabled]):hover:active {
+  outline: 1px solid hsla(210,4%,10%,.12);
+  background-color: hsla(210,4%,10%,.12);
+  box-shadow: 0 1px 0 hsla(210,4%,10%,.05) inset;
+}
+
+#PanelUI-fxa-status:not([disabled]):hover,
+#PanelUI-fxa-status:not([disabled]):hover:active {
+  outline: none;
+}

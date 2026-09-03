@@ -1,0 +1,627 @@
+/* - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this file,
+   - You can obtain one at http://mozilla.org/MPL/2.0/. */
+   
+@namespace html "http://www.w3.org/1999/xhtml";
+@namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+
+xul|page {
+  color: #000;
+}
+
+#header {
+  margin-bottom: 18px;
+}
+
+caption > label {
+  font-size: 2.0rem;
+  font-weight: normal;
+  -moz-margin-start: 0;
+}
+
+.main-content {
+  padding-bottom: 12px;
+  overflow: auto;  
+  background: linear-gradient(145deg, #CED2E0, #EFF2FA 40%, #CED2E0 70%);
+  border: none;
+}
+
+prefpane {
+  max-width: 800px;
+}
+
+groupbox,
+groupbox > .groupbox-title {
+  background-color: transparent;
+}
+
+groupbox,
+.groupbox-title {
+  border: none;
+}
+
+button {
+  box-shadow:
+    0 0 2px rgba(255, 255, 255, 0.4) inset,
+    0 4px 6px rgba(255, 255, 255, 0.4) inset,
+    0 11px 0 -2px rgba(255, 255, 255, 0.2) inset,
+    0 16px 8px rgba(150, 150, 150, 0.3) inset,  
+    1px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Category List */
+
+#categories {
+  -moz-appearance: none;
+  border: none;
+  margin : 0;
+  border-right: 1px solid #C3C6D1;
+  background: linear-gradient(145deg, #CED2E0, #EFF2FA 80%);
+  position: relative;
+  min-width: 32ch;
+}
+
+.category {
+  -moz-box-align: center;
+  overflow: hidden;
+  min-height: 0;
+  padding: 10px 4px;
+  margin: 2px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition-property: height, margin, opacity;
+  transition-duration: 0.4s, 0.4s;
+}
+
+.category[disabled] {
+  border-top: 0;
+  border-bottom: 0;
+  height: 0;
+  opacity: 0;
+  transition-property: height, opacity;
+  transition-duration: 0.5s, 0.2s;
+}
+
+.category:not([disabled]) {
+  height: 56px;
+  transition-property: height, opacity;
+  transition-duration: 0.1s, 0.5s;
+}
+
+#categories > .category:hover {
+  -moz-border-top-colors: #808080 #fff;
+  -moz-border-right-colors: #808080 #A5BFD8;
+  -moz-border-bottom-colors: #808080 #99AFCB;
+  -moz-border-left-colors: #808080 #A5BFD8;
+  background: url(chrome://global/skin/button/hover.png) transparent;
+  background-size: 100% 100%;
+ }
+
+#categories > .category[selected] {
+  -moz-border-top-colors: #808080 #fff;
+  -moz-border-right-colors: #808080 #A5BFD8;
+  -moz-border-bottom-colors: #808080 #99AFCB;
+  -moz-border-left-colors: #808080 #A5BFD8;
+  background: url(chrome://global/skin/button/hover.png) transparent;
+  background-size: 100% 100%;
+}
+
+.category-name {
+  font-size: 140%;
+}
+
+/* Maximize the size of the viewport when the window is small */
+@media (max-width: 800px) {
+  .category-name {
+    display: none;
+  }
+}
+
+.category-icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 6px;
+  -moz-margin-start: 6px;
+  -moz-margin-end: 5px;
+}
+
+.header-name {
+  font-size: 2.5rem;
+  font-weight: normal;
+  line-height: 40px;
+  margin: 0;
+  margin-bottom: 10px;
+  -moz-margin-start: 5px;
+}
+
+.header {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #c1c1c1;
+}
+
+#categories > .category[hidden="true"] {
+  display: -moz-box;
+  visibility: collapse;
+}
+
+#category-general > .category-icon {
+  list-style-image: url(chrome://browser/skin/preferences/main.png) !important;
+}
+
+#category-search > .category-icon {
+  list-style-image: url(chrome://browser/skin/preferences/search.png) !important;
+}
+
+#category-content > .category-icon {
+  list-style-image: url(chrome://browser/skin/preferences/content.png) !important;
+}
+
+#category-application > .category-icon{
+  list-style-image: url(chrome://browser/skin/preferences/applications.png) !important;
+}
+
+#category-privacy > .category-icon {
+  list-style-image: url(chrome://browser/skin/preferences/privacy.png) !important;
+}
+
+#category-security > .category-icon {
+  list-style-image: url(chrome://browser/skin/preferences/security.png) !important;
+}
+
+#category-advanced > .category-icon {
+  list-style-image: url(chrome://browser/skin/preferences/advanced.png) !important;
+}
+
+#category-sync > .category-icon {
+  list-style-image: url(chrome://browser/skin/preferences/sync.png) !important;
+}
+
+@media (max-width: 800px) {
+  .category-name {
+    display: none;
+  }
+}
+
+/* General Pane */
+
+#startupTable {
+  border-collapse: collapse;
+}
+
+#startupTable > tr > td {
+  padding: 0; /* remove the padding from html.css */
+}
+
+#startupTable > tr:not(:first-child) > td {
+  padding-top: 0.5em; /* add a spacing between the rows */
+}
+
+#startupTable > tr > .label-cell {
+  text-align: end;
+  width: 0; /* make the column as small as possible */
+}
+
+#startupTable > tr > .label-cell > label {
+  white-space: nowrap;
+}
+
+#startupTable > tr > .content-cell > menulist,
+#startupTable > tr > .content-cell > textbox {
+  width: calc(100% - 8px);
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+#startupTable > tr > .homepage-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#startupTable > tr > .homepage-buttons > .content-cell-item {
+  flex-grow: 1;
+}
+
+#chooseFolder {
+  -moz-margin-start: 5px;
+}
+
+#useFirefoxSync  {
+  font-size: 90%;
+  -moz-margin-end: 8px !important;
+}
+
+#getStarted {
+  font-size: 90%;
+}
+
+#isNotDefaultLabel {
+  font-weight: bold;
+}
+
+/* search Panel */
+
+#defaultEngine {
+  -moz-padding-start: 5px;
+}
+
+#oneClickProvidersList {
+  margin-bottom: 1em;
+}
+
+/* Content Pane */
+#translationAttributionImage {
+  width: 70px;
+  cursor: pointer;
+}
+
+/* Applications Pane Styles */
+
+#applications-content {
+  padding: 15px;
+}
+
+#handlersView {
+  -moz-appearance: none;
+  border: 1px solid rgba(31,64,100,0.4);
+  overflow-y: auto;
+}
+
+#handlersView listheader {
+  padding: 0;
+  border: 0;
+}
+
+/* XXX This style is for bug 740213 and should be removed once that
+   bug has a solution. */
+description > html|a {
+  cursor: pointer;
+}
+
+#offlineAppsList,
+#syncEnginesList {
+  -moz-appearance: none;
+  color: #333333;
+  padding: 10px;
+  border: 1px solid #C1C1C1;
+  border-radius: 2px;
+  background-color: #FBFBFB;
+}
+
+#fxaProfileImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-width: 5px;
+  border-color: red;
+  background-image: url(chrome://browser/skin/preferences/in-content/default-profile-image.png);
+  background-size: contain;
+  cursor: pointer;
+  -moz-margin-end: 15px;
+}
+
+#fxaProfileImage:hover {
+  border-color: blue;
+}
+
+/* Collapse the non-active vboxes in decks to use only the height the
+   active vbox needs */
+#historyPane:not([selectedIndex="1"]) > #historyDontRememberPane,
+#historyPane:not([selectedIndex="2"]) > #historyCustomPane,
+#weavePrefsDeck:not([selectedIndex="1"]) > #hasAccount,
+#weavePrefsDeck:not([selectedIndex="2"]) > #needsUpdate,
+#weavePrefsDeck:not([selectedIndex="3"]) > #fxaDeterminingStatus,
+#weavePrefsDeck:not([selectedIndex="4"]) > #noFxaAccount,
+#weavePrefsDeck:not([selectedIndex="5"]) > #hasFxaAccount,
+#fxaLoginStatus:not([selectedIndex="1"]) > #fxaLoginUnverified,
+#fxaLoginStatus:not([selectedIndex="2"]) > #fxaLoginRejected {
+  visibility: collapse;
+}
+
+/* XXX This style is for bug 740213 and should be removed once that
+   bug has a solution. */
+description > html|a {
+  cursor: pointer;
+}
+
+#noFxaAccount {
+  /* Overriding the margins from the base preferences.css theme file.
+     These overrides can be simplified by fixing bug 1027174 */
+  margin: 0;
+}
+
+#weavePrefsDeck > vbox > label,
+#weavePrefsDeck > vbox > groupbox,
+#weavePrefsDeck > vbox > description,
+#weavePrefsDeck > vbox > #pairDevice > label,
+#weavePrefsDeck > #needsUpdate > hbox > #loginError,
+#weavePrefsDeck > #hasFxaAccount > vbox > label,
+#weavePrefsDeck > #hasFxaAccount > hbox:not(#tosPP-normal) > label {
+  /* no margin-start for elements at the begin of a line */
+  -moz-margin-start: 0;
+}
+
+/*
+#weavePrefsDeck > #hasFxaAccount > hbox:not(#tosPP-normal) > label,
+#weavePrefsDeck > #hasFxaAccount > hbox:not(#tosPP-small) > label {
+  -moz-margin-start: 5px;
+}
+*/
+
+#advancedPrefs {
+  padding-bottom: 0; /* no padding needed in inContent prefs */
+}
+
+#tabsElement {
+  -moz-margin-end: 4px; /* add the 4px end-margin of other elements */
+}
+
+#encryptionPanel {
+  margin-top: 15px;
+}
+
+#telemetryLearnMore,
+#FHRLearnMore,
+#crashReporterLearnMore {
+  /* center the links */
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+#FHRLearnMore,
+#crashReporterLearnMore {
+  /* provide some margin between the links and the label text */
+  /* !important is needed to override the rules defined in common.css */
+  -moz-margin-start: 20px !important;
+}
+
+#telemetryLearnMore {
+  /* provide some margin between the links and the label text */
+  /* !important is needed to override the rules defined in common.css */
+  -moz-margin-end: -1px !important;
+  -moz-margin-start: 26px !important;
+}
+
+.indent {
+  -moz-margin-start: 20px;
+}
+
+/* XXX Styles Below can be removed once bug 660726 lands */
+.nav-button {
+  list-style-image: url(chrome://mozapps/skin/extensions/navigation.png);
+}
+
+#forward-btn {
+  -moz-border-start: none;
+}
+
+#back-btn:-moz-locale-dir(ltr),
+#forward-btn:-moz-locale-dir(rtl) {
+  -moz-image-region: rect(0, 18px, 18px, 0);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#back-btn:-moz-locale-dir(rtl),
+#forward-btn:-moz-locale-dir(ltr) {
+  -moz-image-region: rect(0, 36px, 18px, 18px);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.header-button {
+  -moz-box-align: center;
+  font-size: 120%;
+  border: 1px solid #a2a6ad;
+  border-radius: 5px;
+  background: url(chrome://global/skin/button/body.png) repeat-x top left #fafafb;
+}
+
+.header-button[disabled="true"] {
+  -moz-box-align: center;
+  font-size: 120%;  
+  border: 1px solid #a2a6ad;
+  border-radius: 5px;
+  background: url(chrome://global/skin/button/body.png) repeat-x top left #fafafb;
+}
+
+.header-button:not([disabled="true"]):hover {
+  background: url(chrome://global/skin/button/body-hover.png) repeat-x top left #b8e9fe;
+  cursor: pointer;
+}
+
+.nav-button[disabled="true"] .toolbarbutton-icon {
+  opacity: 0.4;
+}
+
+.header-button .toolbarbutton-text {
+  display: none;
+}
+
+.help-button {
+  min-width: 30px;
+  background-size : auto 100%;
+  -moz-margin-end: 15px;
+  background: none;
+  box-shadow: none;
+  border: none;
+}
+
+.close-icon > .button-box,
+.help-button > .button-box {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  -moz-margin-end: -8px;
+}
+
+.help-button > .button-box > .button-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url("chrome://global/skin/icons/question-24.png");
+  background-position: center;
+}
+
+.help-button:hover > .button-box > .button-icon {
+  background-image: url("chrome://global/skin/icons/question-24-hover.png");
+}
+
+@media (min-resolution: 2dppx) {
+  .help-button > .button-box > .button-icon {
+    background-size: 24px 24px;
+    background-image: url("chrome://global/skin/icons/question-48.png");
+  }
+  
+  .help-button:hover > .button-box > .button-icon {
+    background-image: url("chrome://global/skin/icons/question-48-hover.png");
+}
+}
+
+.help-button > .button-box > .button-text {
+  display: none;
+}
+
+#trackingProtectionImage {
+  width: 16px;
+  height: 16px;
+  list-style-image: url(chrome://browser/skin/bad-content-blocked-16.png);
+}
+
+@media (min-resolution: 2dppx) {
+  #trackingProtectionImage {
+    list-style-image: url(chrome://browser/skin/bad-content-blocked-16@2x.png);
+  }
+}
+
+/**
+ * Sub-dialog
+ */
+
+#dialogOverlay {
+  background-color: rgba(0,0,0,0.5);
+  visibility: hidden;
+}
+
+#dialogBox {
+  border: 1px solid transparent;
+  display: -moz-box;
+  margin: 0;
+  padding-right: 6px;
+  padding-left: 6px;
+  background-color: #DADCE4;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#dialogBox[resizable="true"] {
+  resize: both;
+  overflow: hidden;
+  min-height: 30em;
+  min-width: 66ch;
+}
+
+#dialogBox > .groupbox-title {
+  border: 1px solid transparent !important;
+  background: #dadce4 !important;
+}
+
+#dialogBox caption {
+  border-bottom: 1px solid #c1c1c1;
+}
+
+#dialogBox > caption > label {
+  -moz-margin-start: 6px;
+}
+
+.close-icon {
+  background-color: transparent !important;
+  background: none !important;
+  border: none;
+  box-shadow: none;
+  height: 18px;
+  padding: 0;
+  margin-top: -10px;
+  -moz-margin-end: -10px;
+  min-width: 18px;
+}
+
+#dialogBox > .groupbox-body {
+  -moz-appearance: none;
+  padding: 0;
+}
+
+#dialogFrame {
+  -moz-box-flex: 1;
+  /* Default dialog dimensions */
+  height: 35em;
+  width: 86ch;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+tree:not(#rejectsTree) {
+  min-height: 15em;
+}
+
+:-moz-any(dialog, window, prefwindow) groupbox {
+  -moz-margin-start: 8px;
+  -moz-margin-end: 8px;
+}
+
+#ColorsDialogPane hbox {
+ overflow : hidden;
+}
+
+#ColorsDialogPane caption > label {
+  font-size: 1.0em;
+  font-weight: bold;
+}
+
+/**
+ * End sub-dialog
+ */
+ 
+ /**
+ * Sync migration
+ */
+#sync-migrate-upgrade-description {
+  /* description elts need a min-width to wrap correctly - bug 630864? */
+  min-width: 100px
+}
+
+#sync-migration {
+  border: 1px solid rgba(0, 0, 0, 0.32);
+  background-color: InfoBackground;
+  color: InfoText;
+  text-shadow: none;
+  margin: 5px 0 0 0;
+  animation: fadein 3000ms;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/**
+ * Sync
+ */
+
+#fxaDeviceName {
+  margin: 14px 0px;
+}
+
+#fxaSyncComputerName.plain {
+  background-color: transparent;
+  opacity: 1;
+}
+
+.actionsMenu > .menulist-label-box > .menulist-icon {
+  -moz-margin-end: 3px;
+}
+
+textbox + button,
+filefield + button {
+  -moz-margin-start: -4px;
+}
+

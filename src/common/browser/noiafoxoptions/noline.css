@@ -1,0 +1,8 @@
+#navigator-toolbox > toolbar:not(:-moz-any(#TabsToolbar, #toolbar-menubar, #nav-bar, #addon-bar, #status-bar)):not(:-moz-lwtheme) {
+  box-shadow: none !important;
+}
+
+#navigator-toolbox > toolbar:not(:-moz-any(#TabsToolbar, #toolbar-menubar, #nav-bar, #addon-bar, #status-bar)):not(:-moz-lwtheme) ,
+#navigator-toolbox > toolbar:not(:-moz-any(#TabsToolbar, #toolbar-menubar, #nav-bar, #addon-bar, #status-bar)):-moz-lwtheme {
+  padding : 1px !important;
+}

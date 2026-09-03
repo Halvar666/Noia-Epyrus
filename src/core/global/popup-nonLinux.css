@@ -1,0 +1,129 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+panel,
+menupopup {
+  color: #000;
+  min-width: 1px;
+  border: 1px solid #666;
+  background-color: #dadce4;
+}
+
+menupopup {
+  background: url(chrome://global/skin/menu/menuback.png) repeat-y #dadce4;
+}
+
+menupopup:-moz-locale-dir(rtl) {
+  background: url(chrome://global/skin/menu/menubackrtl.png) right repeat-y #dadce4;
+}
+
+ /* align submenus */
+
+menupopup > menu > menupopup {
+  margin-left: 0;
+  margin-top: -2px;
+}
+
+tooltip {
+  background : linear-gradient(to bottom, #FFFFFF, #E4E5F0 60%);
+  border : 1px solid #767676;
+  border-radius : 3px;
+  margin-top: 18px;
+  padding: 2px 3px;
+  max-width: 40em;
+  color: #000000;
+  font: message-box;
+  cursor: default;
+}
+
+tooltip[titletip="true"] {
+  max-width: none;
+}
+
+.menulist-menupopup,
+menulist > menupopup,
+menulist > menupopup:-moz-locale-dir(rtl) {
+  background: #f8f8f8;
+  min-width: 0;
+  border: 1px solid #666;
+  border-radius: 0;
+  -moz-padding-start : 1px;
+  -moz-padding-end : 1px;
+}
+
+panel[type="arrow"] {
+  border: 0;
+  background: transparent;
+}
+
+panel[type="arrow"][side="top"],
+panel[type="arrow"][side="bottom"] {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+panel[type="arrow"][side="left"],
+panel[type="arrow"][side="right"] {
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+.panel-arrowcontent {
+  --panel-arrowcontent-padding: 10px;
+  --panel-arrowcontent-background: #dadce4;
+  --panel-arrowcontent-color: -moz-FieldText;
+  --panel-arrowcontent-border: 1px solid #666;
+}
+
+.panel-arrowcontent {
+  margin: 4px;
+  padding: 10px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background : #dadce4;
+  box-shadow: 3px 3px 2px rgba(0,0,0,.3);
+}
+
+.panel-arrowcontent[side="top"],
+.panel-arrowcontent[side="bottom"] {
+  background-image: linear-gradient(#FDFDFE 1px, rgba(255,255,255,0) 25px);
+}
+
+.panel-arrowcontent[side="left"],
+.panel-arrowcontent[side="right"] {
+  background-image: linear-gradient(#FDFDFE 1px, rgba(255,255,255,0) 10px);
+}
+
+.panel-arrow[side="top"],
+.panel-arrow[side="bottom"] {
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.panel-arrow[side="top"] {
+  list-style-image: url(chrome://global/skin/arrow/panelarrow-up.png);
+  margin-bottom: -5px;
+}
+
+.panel-arrow[side=bottom] {
+  list-style-image: url(chrome://global/skin/arrow/panelarrow-down.png);
+  margin-top: -5px;
+}
+
+.panel-arrow[side="left"],
+.panel-arrow[side="right"] {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.panel-arrow[side=left] {
+  list-style-image: url(chrome://global/skin/arrow/panelarrow-horiz.png);
+  margin-right: -5px;
+}
+
+.panel-arrow[side=right] {
+  list-style-image: url(chrome://global/skin/arrow/panelarrow-horiz.png);
+  transform: scaleX(-1);
+  margin-left: -5px;
+}

@@ -1,0 +1,31 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+toolbar {
+  min-width: 1px;
+  min-height: 20px;
+  -moz-appearance: toolbar;
+}
+
+menubar:-moz-lwtheme,
+toolbar:-moz-lwtheme {
+  -moz-appearance: none;
+  background: none;
+  border-style: none;
+}
+
+menubar {
+  -moz-appearance: dialog; /* For content menubars, "toolbar" is too dark, so we use "dialog". */
+  min-width: 1px;
+}
+
+.toolbar-holder {
+  min-width: 1px;
+}
+
+.toolbar-primary {
+  min-height: 24px;
+}

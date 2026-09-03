@@ -1,0 +1,233 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+
+#menubar-items {
+  -moz-box-orient: vertical; /* for flex hack */
+}
+
+#main-menubar {
+  -moz-box-flex: 1; /* make menu items expand to fill toolbar height */
+}
+
+#navigator-toolbox {
+  -moz-appearance: none;
+  background-color: transparent;
+  border-top: none;
+}
+
+#navigator-toolbox::after {
+  content: "";
+  display: -moz-box;
+  -moz-box-ordinal-group: 101; /* tabs toolbar is 100 */
+  height: 1px;
+  background-color: ThreeDShadow;
+}
+
+#navigator-toolbox > toolbar:not(:-moz-lwtheme):not(#toolbar-menubar):not(#TabsToolbar) {
+  -moz-appearance: none;
+  background-color: #dadce4;
+}
+
+#navigator-toolbox > toolbar:not(:-moz-any(#TabsToolbar, #toolbar-menubar, #nav-bar, #addon-bar, #status-bar)):not(:-moz-lwtheme) {
+  box-shadow: 0px 1px 0px #c0c0c0 inset, 0px 2px 0px #f0f0f0 inset;
+}
+
+#navigator-toolbox > toolbar:not(:-moz-any(#TabsToolbar, #toolbar-menubar, #nav-bar, #addon-bar, #status-bar)):not(:-moz-lwtheme) {
+  padding : 2px 1px 1px 1px;
+}
+
+#navigator-toolbox > toolbar:not(:-moz-any(#TabsToolbar, #toolbar-menubar, #nav-bar, #addon-bar, #status-bar)):-moz-lwtheme {
+  padding : 1px;
+}
+
+#nav-bar {
+  background-image: linear-gradient(rgba(253,253,253,0.45), rgba(255,255,255,0));
+  box-shadow: 0 1px 0 rgba(253,253,253,0.45) inset;
+  margin-top: -1px; /* Move up 1px into the TabsToolbar */
+  padding-top: 2px;
+  padding-bottom: 2px;
+  /* Position the toolbar above the bottom of background tabs */
+  position: relative;
+  z-index: 1;
+}
+
+#nav-bar-overflow-button {
+  -moz-image-region: rect(-5px, 12px, 11px, -4px);
+}
+
+#personal-bookmarks {
+  min-height: 29px;
+}
+
+#browser-bottombox {
+  /* opaque for layers optimization */
+  background-color: -moz-Dialog;
+}
+
+#urlbar:-moz-lwtheme:not([focused="true"]),
+.searchbar-textbox:-moz-lwtheme:not([focused="true"]) {
+  opacity: .85;
+}
+
+/************************ TABS *********************************/
+
+#TabsToolbar {
+  min-height: 0;
+  padding: 0;
+  position: relative;
+}
+
+.tabs-newtab-button,
+#TabsToolbar > #new-tab-button ,
+#TabsToolbar > #wrapper-new-tab-button > #new-tab-button {
+  list-style-image: url("moz-icon://stock/gtk-add?size=menu") !important;
+  -moz-image-region: auto;
+}
+
+/*
+ * Draw the bottom border of the tabstrip:
+ */
+#TabsToolbar::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  border-bottom: 1px solid hsla(0,0%,0%,.3);
+}
+
+#TabsToolbar:not(:-moz-lwtheme) {
+  -moz-appearance: menubar;
+}
+
+#toolbar-menubar:not([autohide="true"]):not(:-moz-lwtheme):-moz-system-metric(menubar-drag),
+#TabsToolbar:not(:-moz-lwtheme):-moz-system-metric(menubar-drag) {
+  -moz-binding: url("chrome://browser/content/customizableui/toolbar.xml#toolbar-drag");
+}
+
+#TabsToolbar:not(:-moz-lwtheme) {
+  -moz-appearance: menubar;
+  color: -moz-menubartext;
+}
+
+#toolbar-menubar:not([autohide="true"]):not(:-moz-lwtheme):-moz-system-metric(menubar-drag),
+#TabsToolbar:not(:-moz-lwtheme):-moz-system-metric(menubar-drag) {
+  -moz-binding: url("chrome://browser/content/customizableui/toolbar.xml#toolbar-drag");
+}
+
+#TabsToolbar:not(:-moz-lwtheme) > #tabbrowser-tabs > .tabbrowser-tab:not([selected]) {
+  color: -moz-menubartext;
+}
+
+.tabbrowser-tab:focus > .tab-stack > .tab-content > .tab-label {
+  outline: 1px dotted;
+}
+
+#context_reloadTab {
+  list-style-image:url(chrome://global/skin/CuteMenus/reload.png);
+}
+
+#context_closeOtherTabs {
+  list-style-image:url(chrome://global/skin/CuteMenus/delete.png);
+}
+
+#context_closeOtherTabs[disabled] {
+  list-style-image:url(chrome://global/skin/CuteMenus/fileclose.png);
+}
+
+#context_undoCloseTab {
+  list-style-image:url(chrome://global/skin/CuteMenus/undo.png);
+}
+
+#context_closeTab {
+  list-style-image:url(chrome://global/skin/CuteMenus/delete.png);
+}
+
+/* Fullscreen window controls */
+
+#window-controls {
+  -moz-box-align: start;
+  -moz-margin-start: 10px;
+}
+
+#minimize-button {
+  list-style-image: url("chrome://global/skin/icons/Minimize.gif");
+   -moz-image-region: rect(0, 10px, 9px, 0);
+}
+
+#restore-button {
+  list-style-image: url("chrome://global/skin/icons/Restore.gif");
+  -moz-image-region: rect(0, 10px, 9px, 0);
+}
+
+#close-button {
+  list-style-image: url("chrome://global/skin/icons/Close.gif");
+  -moz-image-region: rect(0, 10px, 9px, 0);
+}
+
+
+/* Customization mode */
+
+#main-window[customize-entered] > #tab-view-deck {
+  background-image: url("chrome://browser/skin/customizableui/customizeMode-gridTexture.png"),
+                    linear-gradient(to bottom, #bcbcbc, #b5b5b5);
+  background-attachment: fixed;
+}
+
+#main-window[customization-lwtheme] > #tab-view-deck:-moz-lwtheme {
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+  /* The image will get set from CustomizeMode.jsm */
+  background-image: none;
+  background-color: transparent;
+}
+
+#main-window[customization-lwtheme]:-moz-lwtheme {
+  background-image: url("chrome://browser/skin/customizableui/customizeMode-gridTexture.png"),
+                    url("chrome://browser/skin/customizableui/background-noise-toolbar.png"),
+                    linear-gradient(to bottom, #bcbcbc, #b5b5b5);
+  background-color: #b5b5b5;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: left top;
+}
+
+#main-window[customize-entered] #browser-bottombox,
+#main-window[customize-entered] #navigator-toolbox > toolbar:not(#toolbar-menubar):not(#TabsToolbar),
+#main-window[customize-entered] #customization-container {
+  border: 3px solid hsla(0,0%,0%,.1);
+  border-top-width: 0;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  -moz-border-right-colors: hsla(0,0%,0%,.05) hsla(0,0%,0%,.1) hsla(0,0%,0%,.2);
+  -moz-border-bottom-colors: hsla(0,0%,0%,.05) hsla(0,0%,0%,.1) hsla(0,0%,0%,.2);
+  -moz-border-left-colors: hsla(0,0%,0%,.05) hsla(0,0%,0%,.1) hsla(0,0%,0%,.2);
+}
+
+#main-window[customize-entered] #customization-container,
+#main-window[customize-entered] #navigator-toolbox > toolbar:not(#toolbar-menubar):not(#TabsToolbar) {
+  border-bottom-width: 0;
+}
+
+#main-window[customize-entered] #TabsToolbar {
+  -moz-appearance: none;
+  background-clip: padding-box;
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+}
+
+/* End customization mode */
+
+/************************ Private browsing *********************************/
+
+#main-window[privatebrowsingmode=temporary] #private-browsing-indicator {
+  background: url("chrome://browser/skin/privatebrowsing-indicator.png") center no-repeat;
+  width: 40px;
+}

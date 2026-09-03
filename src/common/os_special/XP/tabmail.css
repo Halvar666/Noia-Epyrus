@@ -1,0 +1,28 @@
+.tabmail-tab:hover > .tab-stack > .tab-background:not([selected=true]),
+.tab-background[selected=true] {
+  background-repeat: no-repeat,
+                     no-repeat,
+                     no-repeat;
+  background-position: left 0,
+                       30px 0,
+                       right 0;
+  background-size: 30px 100%,
+                   calc(100% - 60px) 100%,
+                   30px 100%;
+}
+
+#messengerWindow[tabsintitlebar]
+.tabmail-tab:not([selected]):not(:-moz-lwtheme) {
+  color: CaptionText;
+}
+
+@media (-moz-windows-theme: luna-blue),
+       (-moz-windows-theme: royale),
+       (-moz-windows-theme: zune) {
+  #messengerWindow[tabsintitlebar] .tabs-alltabs-button {
+    list-style-image: url(chrome://messenger/skin/icons/mainwindow-dropdown-arrow-inverted.png);
+  }
+}
+
+
+

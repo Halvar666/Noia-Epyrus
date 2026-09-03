@@ -1,0 +1,190 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#tabs-toolbar {
+  --tab-height: 25px;
+  --tab-border-radius: 6px;
+
+  --tab-background: linear-gradient(transparent, hsla(0,0%,45%,.1) 1px, hsla(0,0%,32%,.2) 80%, hsla(0,0%,0%,.2));
+  --tab-background-hover: linear-gradient(hsla(0,0%,100%,.3) 1px, hsla(0,0%,75%,.2) 80%, hsla(0,0%,60%,.2));
+  --tab-background-shadow: linear-gradient(to top, rgba(10%,10%,10%,.4) 1px, transparent 1px);
+
+  --tab-box-shadow: inset 0.5px 1px 1px var(--tab-selected-highlight);
+  --tab-selected-highlight: rgba(255,255,255,.7);
+}
+
+#tabs-toolbar:-moz-lwtheme-darktext {
+  --tab-selected-highlight: rgba(255,255,255,.6);
+}
+
+.tabmail-tab {
+  appearance: none;
+  background: var(--tab-background-shadow), var(--tab-background),
+              linear-gradient(var(--toolbar-custom-color), var(--toolbar-custom-color));
+  background-clip: padding-box;
+  padding: 3px 1px 4px;
+  /* Setting a transparent outer border allows us to have a 1px gap
+     between the tabs and the top edge of the screen, even when the
+     tabs have a top margin of 0, which is important for Fitts' law
+     compliance */
+  border: 1.6px solid;
+  border-bottom: none;
+  border-radius: var(--tab-border-radius) var(--tab-border-radius) 0px 0px;
+  -moz-border-top-colors: transparent #929292;
+  -moz-border-left-colors: transparent #929292;
+  -moz-border-right-colors: transparent #929292;
+  /* Hide the transparent top border by default */
+  margin-top: -1px;
+  /* Reduce the gap between the tabs */
+  margin-inline-start: -1px;
+  box-shadow: var(--tab-box-shadow);
+  padding-inline-end: 3px;
+  min-height: var(--tab-height);
+}
+
+@media (min-resolution: 1.25dppx) {
+  /* XXX: At 120 DPI and higher, we restore the gap between tabs and adjust to
+     the platform's handling of rounding fractional units. See UXP#1930. */
+  .tabmail-tab {
+    margin-inline-start: 0;
+  }
+}
+
+.tabmail-tab:hover {
+  background-image: var(--tab-background-shadow), var(--tab-background-hover),
+                    linear-gradient(var(--toolbar-custom-color), var(--toolbar-custom-color));
+}
+
+.tabmail-tab[selected=true] {
+  background-image: linear-gradient(var(--tab-selected-highlight), var(--toolbar-highlight-top) 50%),
+                    linear-gradient(var(--toolbar-custom-color), var(--toolbar-custom-color));
+}
+
+.tabmail-tab[type="preferencesTab"] {
+  list-style-image: url("chrome://mozapps/skin/extensions/utilities.svg#utilities");
+}
+
+/* Remove highlight fuzz on dark themes */
+.tabmail-tab:-moz-lwtheme-brighttext {
+  box-shadow:none;
+  -moz-border-top-colors: transparent #707070;
+  -moz-border-left-colors: transparent #707070;
+  -moz-border-right-colors: transparent #707070;
+}
+
+.tabmail-tab[selected="true"]:-moz-lwtheme {
+  background-image: linear-gradient(var(--tab-selected-highlight), var(--toolbar-highlight-top) 50%);
+}
+
+.tabmail-tab[selected="true"]:-moz-lwtheme-brighttext {
+  background-image: linear-gradient(rgba(128,128,128,.9), rgba(32,32,32,.9) 50%, rgba(32,32,32,.9) 80%, var(--toolbar-highlight-top) 100%);
+  -moz-border-top-colors: transparent #D0D0D0;
+  -moz-border-left-colors: transparent #D0D0D0;
+  -moz-border-right-colors: transparent #D0D0D0;
+}
+
+.tabmail-tab:-moz-lwtheme-brighttext:not([selected="true"]) {
+  background-image: linear-gradient(hsla(0,0%,25%,.4), hsla(0,0%,15%,.6) 80%);
+}
+
+.tabmail-tab:-moz-lwtheme-brighttext:not([selected="true"]):hover {
+  background-image: linear-gradient(hsla(0,0%,60%,.4), hsla(0,0%,10%,.8) 80%);
+}
+
+.tabmail-tab:-moz-lwtheme-darktext:not([selected="true"]) {
+  background-image: linear-gradient(hsla(0,0%,75%,.4), hsla(0,0%,85%,.6) 80%);
+}
+
+.tabmail-tab:-moz-lwtheme-darktext:not([selected="true"]):hover {
+  background-image: linear-gradient(hsla(0,0%,60%,.4), hsla(0,0%,90%,.8) 80%);
+}
+
+.tab-content {
+  padding-inline-end: 1px;
+  padding-inline-start: 1px;
+}
+
+.tab-throbber,
+.tab-icon-image,
+.tab-close-button {
+  margin-top: 1px;
+}
+
+.tab-throbber,
+.tab-icon-image {
+  height: 16px;
+  width: 16px;
+}
+
+.tab-throbber,
+.tab-icon-image {
+  margin-inline-end: 6px;
+}
+
+.tab-label {
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+}
+
+.tab-content > .tab-close-button {
+  margin-inline-start: 4px;
+  margin-inline-end: -2px;
+  padding: 0;
+}
+
+.tabmail-tab:-moz-lwtheme {
+  color: inherit;
+}
+
+/* Tab Overflow */
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-start-indicator:not([collapsed]),
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-end-indicator:not([collapsed]) {
+  background-image: url("chrome://messenger/skin/tabs/overflow-indicator.png");
+  background-size: 100% 100%;
+  width: 14px;
+  margin-bottom: 1px;
+  pointer-events: none;
+  position: relative;
+  z-index: 3; /* the selected tab's z-index + 1 */
+}
+
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-start-indicator:-moz-locale-dir(rtl),
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-end-indicator:-moz-locale-dir(ltr) {
+  transform: scaleX(-1);
+}
+
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-start-indicator:not([collapsed]) {
+  margin-inline-start: -2px;
+  margin-inline-end: -12px;
+}
+
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-end-indicator:not([collapsed]) {
+  margin-inline-start: -12px;
+  margin-inline-end: -2px;
+}
+
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-start-indicator[collapsed],
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-end-indicator[collapsed] {
+  opacity: 0;
+}
+
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-start-indicator,
+.tabmail-arrowscrollbox > .arrowscrollbox-overflow-end-indicator {
+  transition: opacity 150ms ease;
+}
+
+/* Content Tabs */
+.contentTabToolbox {
+  height: 0px;
+}
+
+.contentTabInstance[disablechrome] .contentTabToolbox {
+  display: none;
+}
+
+.contentTabToolbar {
+  height: 0px;
+  min-height: 0px;
+  padding: 0px;
+}

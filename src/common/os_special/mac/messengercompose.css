@@ -1,0 +1,7 @@
+#composeToolbar2 {
+  margin-top: -22px;
+}
+
+#composeToolbar2:-moz-lwtheme {
+  padding-top: 22px;
+}

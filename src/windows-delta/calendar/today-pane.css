@@ -1,0 +1,131 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url(chrome://calendar-common/skin/today-pane.css);
+
+.today-pane-cycler {
+  list-style-image: url("chrome://calendar-common/skin/today-pane-cycler.svg#normal");
+}
+
+.today-pane-cycler:-moz-lwtheme-brighttext {
+  list-style-image: url("chrome://calendar-common/skin/today-pane-cycler.svg#inverted");
+}
+
+.today-pane-cycler[dir="prev"]:-moz-locale-dir(ltr) > .toolbarbutton-icon,
+.today-pane-cycler[dir="next"]:-moz-locale-dir(rtl) > .toolbarbutton-icon {
+  transform: scaleX(-1);
+}
+
+.today-subpane {
+  border-color: ThreeDShadow;
+}
+
+#mini-day-image {
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, .1));
+}
+
+@media (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win10),
+       (-moz-os-version: windows-win11) {
+  #mini-day-image {
+    background-image: none;
+  }
+}
+
+@media (-moz-os-version: windows-win8) {
+  #mini-day-box {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+}
+
+.miniday-nav-buttons {
+  list-style-image: url("chrome://calendar-common/skin/widgets/nav-arrow.svg");
+}
+
+#previous-day-button:-moz-locale-dir(ltr),
+#next-day-button:-moz-locale-dir(rtl) {
+  transform: scaleX(-1);
+}
+
+#miniday-dropdown-button {
+  max-width: 18px;
+}
+
+.today-closebutton {
+  list-style-image: url("chrome://global/skin/icons/close.svg");
+  appearance: none;
+  border: none !important;
+  padding: 2px;
+}
+
+.today-closebutton:hover {
+  -moz-image-region: rect(0, 32px, 16px, 16px);
+}
+
+.today-closebutton:hover:active {
+  -moz-image-region: rect(0, 48px, 16px, 32px);
+}
+
+.today-closebutton:not([selected]):not(:hover):-moz-lwtheme-brighttext {
+  list-style-image: url("chrome://global/skin/icons/close-inverted.svg");
+}
+
+.today-closebutton > .toolbarbutton-icon {
+  margin-inline-end: 0px; /* override toolkit's default value */
+}
+
+#today-none-box {
+  border-top: 1px solid ThreeDShadow;
+}
+
+.today-pane-cycler {
+  padding-inline-start: 5px;
+  padding-inline-end: 5px;
+}
+
+#todaypane-new-event-button {
+  list-style-image: url(chrome://calendar-common/skin/calendar-toolbar.svg#newevent);
+}
+
+#todaypane-new-event-button[disabled="true"] > .toolbarbutton-icon {
+  opacity: 0.4;
+}
+
+#todaypane-new-event-button > .toolbarbutton-icon {
+  width: 18px;
+  height: 18px;
+  margin: -1px;
+}
+
+@media (-moz-windows-default-theme) {
+  #today-pane-panel > sidebarheader {
+    appearance: none;
+    background-color: #f8f8f8;
+    border-bottom: none;
+  }
+
+  sidebarheader > spacer {
+    min-height: 25px;
+  }
+}
+
+#today-pane-panel:-moz-lwtheme > sidebarheader {
+  background-color: transparent;
+}
+
+@media all and (-moz-windows-compositor) {
+  @media not all and (-moz-os-version: windows-win10),
+         not all and (-moz-os-version: windows-win11) {
+    #messengerWindow[sizemode=normal] #today-pane-panel {
+      border-inline-end: 1px solid rgba(10%, 10%, 10%, .4);
+      border-bottom: 1px solid rgba(10%, 10%, 10%, .4);
+      background-clip: padding-box;
+    }
+  }
+
+  .today-pane-cycler {
+    margin-top: -1px;
+  }
+}

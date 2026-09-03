@@ -1,0 +1,6 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+#reporterMenuButton {
+ list-style-image: url(chrome://browser/skin/icons/report.png);
+ -moz-image-region: rect(0 32px 32px 0);
+}

@@ -1,0 +1,7 @@
+#bg {
+  background: linear-gradient(#C4C4C4, #9E9E9E);
+}
+
+#bg:-moz-window-inactive {
+  background: linear-gradient(#EDEDED, #D8D8D8);
+}

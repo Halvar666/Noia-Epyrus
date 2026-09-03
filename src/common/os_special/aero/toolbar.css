@@ -1,0 +1,26 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== toolbar.css ====================================================
+  == Styles used by XUL toolbar-related elements.
+  ======================================================================= */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* ::::: toolbar ::::: */
+
+toolbar {
+  min-width: 1px;
+  min-height: 19px;
+}
+
+/* ::::: lightweight theme ::::: */
+ 
+menubar:-moz-lwtheme,
+toolbox:-moz-lwtheme,
+toolbar:-moz-lwtheme {
+  -moz-appearance: none;
+  background: none;
+  border-style: none;
+}

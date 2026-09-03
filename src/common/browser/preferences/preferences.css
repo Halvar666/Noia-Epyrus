@@ -1,0 +1,273 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url(chrome://global/skin/filefield.css);
+
+/* Global Styles */
+radio[pane=paneMain] {
+  list-style-image: url(chrome://browser/skin/preferences/main.png) !important;
+}
+
+radio[pane=panePrivacy] {
+  list-style-image: url(chrome://browser/skin/preferences/privacy.png) !important;
+}
+
+#BrowserPreferences radio[pane=paneSearch] {
+  list-style-image: url(chrome://browser/skin/preferences/search.png) !important;
+}
+
+radio[pane=paneContent] {
+  list-style-image: url(chrome://browser/skin/preferences/content.png) !important;
+}
+
+radio[pane=paneTabs] {
+  list-style-image: url(chrome://browser/skin/preferences/tabs.png) !important;
+}
+
+radio[pane=paneAdvanced] {
+  list-style-image: url(chrome://browser/skin/preferences/advanced.png) !important;
+}
+
+radio[pane=paneApplications] {
+  list-style-image: url(chrome://browser/skin/preferences/applications.png) !important;
+}
+
+radio[pane=paneSecurity] {
+  list-style-image: url(chrome://browser/skin/preferences/security.png) !important;
+}
+
+radio[pane=paneSync] {
+  list-style-image: url(chrome://browser/skin/preferences/sync.png) !important;
+}
+
+prefpane {
+  padding-top: 5px;
+  padding-bottom: 0px;
+}
+
+.prefWindow-dlgbuttons {
+  padding-bottom: 5px;
+}
+
+label.small {
+  font-size: smaller;
+}
+
+#tabPrefsBox {
+  margin: 6px;
+}
+
+/* General Pane */
+
+#useFirefoxSync,
+#getStarted {
+  font-size: 90%;
+}
+
+#isNotDefaultLabel {
+  font-weight: bold;
+}
+
+/* Search Panel */
+
+#defaultEngine {
+  -moz-padding-start: 5px;
+}
+
+#oneClickProvidersList .checkbox-check {
+  margin: 3px;
+  width:16px;
+  height:16px;
+  list-style-image: url(chrome://global/skin/checkbox/checkbox.png);
+}
+
+/* checked */
+#oneClickProvidersList richlistitem[checked="true"] > .checkbox-check {
+  list-style-image: url(chrome://global/skin/checkbox/checkbox-checked.png);
+}
+
+/* focused */
+
+#oneClickProvidersList richlistitem:-moz-focusring > .checkbox-check{
+  list-style-image: url(chrome://global/skin/checkbox/checkbox-focus.png);
+}
+
+#oneClickProvidersList richlistitem[checked="true"]:-moz-focusring > .checkbox-check{
+  list-style-image: url(chrome://global/skin/checkbox/checkbox-checked-focus.png);
+}
+
+/* active */
+#oneClickProvidersList richlistitem:active > .checkbox-check {
+  list-style-image: url(chrome://global/skin/checkbox/checkbox-active.png);
+}
+
+#oneClickProvidersList richlistitem[checked="true"]:active > .checkbox-check{
+  list-style-image: url(chrome://global/skin/checkbox/checkbox-checked-active.png);
+}
+
+/* hover */
+#oneClickProvidersList richlistitem:not([disabled="true"]):hover > .checkbox-check{
+  list-style-image: url(chrome://global/skin/checkbox/checkbox-active.png);
+}
+
+#oneClickProvidersList richlistitem[checked="true"]:not([disabled="true"]):hover > .checkbox-check{
+  list-style-image: url(chrome://global/skin/checkbox/checkbox-checked-active.png);
+}
+
+/* disabled */
+#oneClickProvidersList richlistitem[disabled="true"] {
+  color: #aaa;
+  text-shadow: none !important;
+}
+
+#oneClickProvidersList richlistitem[disabled="true"] > .checkbox-check {
+  opacity: .4;
+}
+
+/* Content Pane */
+#translationAttributionImage {
+  width: 70px;
+  cursor: pointer;
+}
+
+/* Applications Pane */
+
+#paneApplications {
+  padding: 8px 0 0;
+}
+
+#paneApplications #filter {
+  margin: 2px 8px;
+}
+
+#BrowserPreferences[animated=true] #handlersView {
+  height: 25em;
+}
+
+#BrowserPreferences[animated="false"] #handlersView {
+  -moz-box-flex: 1;
+}
+
+#clearCacheButton {
+  list-style-image: url(chrome://global/skin/CuteMenus/Cleanup.png);
+}
+
+.inline-link {
+  cursor: pointer;
+  color: #0066CC;
+  text-decoration : none;
+}
+
+.inline-link:hover {
+  text-decoration: underline;
+}
+
+/* Modeless Window Dialogs */
+.windowDialog,
+.windowDialog prefpane {
+  padding: 0;
+  background: #dadce4;
+}
+
+.contentPane {
+  margin: 9px 8px 5px;
+}
+
+.actionButtons {
+  margin: 0 3px 6px !important;
+}
+
+/* Cookies Manager */
+
+#cookiesChildren::-moz-tree-image(domainCol) {
+  width: 16px;
+  height: 16px;
+  margin: 0 2px;
+  list-style-image: url(chrome://global/skin/CuteMenus/source.png) !important;
+}
+
+#cookiesChildren::-moz-tree-image(domainCol, container) {
+  list-style-image: url(chrome://browser/skin/icons/folder_closed.png);
+}
+
+#cookiesChildren::-moz-tree-image(domainCol, container, open) {
+  list-style-image: url(chrome://browser/skin/icons/folder_open.png);
+}
+
+#cookieInfoBox {
+  border: 1px solid #A0A0A0;
+  border-radius: 0;
+  margin: 4px;
+  padding: 0;
+}
+
+/* Sync Pane */
+#syncDesc {
+  padding: 0 12em;
+}
+
+.syncGroupBox {
+  padding: 10px;
+}
+
+#accountCaptionImage {
+  margin-right: 2px;
+  list-style-image: url(chrome://mozapps/skin/profile/profileicon.png);
+}
+
+#syncAddDeviceLabel {
+  margin-top: 1em;
+  margin-bottom: 1em;
+ }
+
+#syncEnginesList {
+  height: 11em;
+}
+
+/* Advanced Pane */
+#advancedPrefs {
+  padding-bottom: 8px;
+}
+
+.bottomBox {
+  padding-bottom: 2px;
+}
+
+#noFxaAccount {
+  margin: 6px;
+  line-height: 1.2em;
+}
+
+#noFxaAccount > label:first-child {
+  margin-bottom: 0.6em;
+}
+
+#fxa-pweng-help-link > label {
+  margin: 0;
+}
+
+#fxa-pweng-help-link > image {
+  list-style-image: url("chrome://global/skin/icons/question-16.png");
+}
+
+/**
+ * Sync migration
+ */
+#sync-migration {
+  border: 1px solid rgba(0, 0, 0, 0.32);
+  background-color: InfoBackground;
+  color: InfoText;
+  text-shadow: none;
+  margin: 5px 0 0 0;
+  animation: fadein 3000ms;
+}
+
+#sync-migration description {
+  margin: 8px;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

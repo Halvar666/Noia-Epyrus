@@ -1,0 +1,11 @@
+#nav-header,
+#header {
+  height: 3em;
+  padding: 0 5px;
+  border-bottom: 1px solid #808080;
+  background: linear-gradient(to bottom,#e8e8ec,#adaebb);
+}
+
+.nav-button {
+  visibility: hidden;
+}

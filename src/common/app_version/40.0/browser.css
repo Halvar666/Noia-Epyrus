@@ -1,0 +1,43 @@
+@import url(chrome://browser/skin/browser40.css);
+
+/* Popup Body Text */
+
+.identity-popup-description {
+  white-space: pre-wrap;
+  -moz-padding-start: 15px;
+  margin: 2px 0 4px;
+}
+
+.identity-popup-label {
+  white-space: pre-wrap;
+  -moz-padding-start: 15px;
+  margin: 0;
+}
+
+#identity-popup-content-host,
+#identity-popup-content-box.verifiedIdentity > #identity-popup-content-owner {
+  font-size: 1.2em;
+}
+
+#identity-popup-content-host {
+  font-weight: bold;
+  max-width: 300px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+#identity-popup-content-owner {
+  margin-top: 4px;
+  margin-bottom: 0 !important;
+  font-weight: bold;
+  max-width: 300px;
+}
+
+.verifiedDomain > #identity-popup-content-owner {
+  font-weight: normal;
+}
+
+#identity-popup-more-info-button {
+  margin: 6px 1px 2px 0;
+  padding-bottom: 0;
+}

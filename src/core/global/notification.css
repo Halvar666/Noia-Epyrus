@@ -1,0 +1,102 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+notification,
+.messageText > .text-link {
+  color: #000 !important;
+}
+
+notification {
+  min-height: 28px !important;
+  text-shadow: none;
+  background: #F0C864;
+}
+
+notification[type="info"],
+notification[type="info"] .messageText > .text-link {
+  color: #000 !important;
+}
+
+notification[type="info"] {
+  background-color: #cadce4;
+}
+
+notification[type="critical"],
+notification[type="critical"] .messageText > .text-link {
+  color: #fff !important;
+}
+
+notification[type="critical"] {
+  background-color: #f00;
+}
+
+.messageText > .text-link {
+  text-decoration: underline;
+}
+
+.notification-inner {
+  border: 0 !important;
+  border-top: 1px solid #808080 !important;
+}
+
+.messageImage {
+  width: 16px;
+  height: 16px;
+  margin: 0 1px 0 5px;
+}
+
+.messageImage[type="info"] {
+  list-style-image: url(chrome://global/skin/CuteMenus/info.png);
+}
+
+.messageImage[type="warning"] {
+  list-style-image: url(chrome://global/skin/icons/warning-16.png);
+}
+
+.messageImage[type="critical"] {
+  list-style-image: url(chrome://global/skin/CuteMenus/stop.png);
+}
+
+.messageCloseButton {
+  -moz-appearance: none;
+  padding: 4px 2px;
+  border: none !important;
+}
+
+/* Popup notification */
+
+.popup-notification-description {
+  max-width: 25em;
+}
+
+.popup-notification-origin:not([value]),
+.popup-notification-learnmore-link:not([href]) {
+  display: none;
+}
+
+.popup-notification-origin {
+  margin-bottom: .3em !important;
+}
+
+.popup-notification-learnmore-link {
+  margin-top: .5em !important;
+}
+
+.popup-notification-button-container {
+  margin-top: 17px;
+}
+
+.popup-notification-originHost:not([value]) {
+  display: none;
+}
+
+.popup-notification-originHost {
+  margin-bottom: .3em !important;
+}
+
+.popup-notification-learnmore-link {
+  margin-top: .5em !important;
+}
+
+.popup-notification-closebutton {
+  margin: -8px -8px 0 0;
+}

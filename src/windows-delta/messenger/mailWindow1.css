@@ -1,0 +1,1495 @@
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+/* ===== mailWindow1.css ================================================
+  == Styles for the main Mail window in the default layout scheme.
+  ======================================================================= */
+
+@import url("chrome://messenger/skin/");
+@import url("chrome://messenger/skin/primaryToolbar.css");
+@import url("chrome://messenger/skin/folderMenus.css");
+@import url("chrome://messenger/skin/folderPane.css");
+@import url("chrome://messenger/skin/tagColors.css");
+@import url("chrome://messenger/skin/messageIcons.css");
+@import url("chrome://messenger/skin/shared/mailWindow1.css");
+
+:root {
+  --window-text-color: currentColor;  
+}
+
+/* Don't use the listbox appearance as that gives us a blue-grey top border
+   that collides with the primary toolbar border */
+#threadTree, #folderTree {
+  appearance:  none;
+  background-color: -moz-Field;
+  color: -moz-FieldText;
+}
+
+#folderPane-toolbar {
+  border-bottom-width: 1px !important;
+  border-bottom-color: ThreeDShadow;
+}
+
+/* Give viewPickerPopup a menu look */
+#viewPickerPopup {
+  background-color: menu;
+}
+
+#viewPickerPopup {
+  -moz-border-top-colors: ThreeDShadow;
+  -moz-border-left-colors: ThreeDShadow;
+  -moz-border-right-colors: ThreeDShadow;
+  -moz-border-bottom-colors: ThreeDShadow;
+}
+
+#viewPickerPopup > menu,
+#viewPickerPopup > menuitem {
+  padding-inline-end: 1px;
+}
+
+#viewPickerPopup menu[_moz-menuactive="true"],
+#viewPickerPopup menuitem[_moz-menuactive="true"] {
+  color: -moz-MenuHoverText;
+  background-color: -moz-MenuHover;
+}
+
+/* ::::: thread decoration ::::: */
+
+treechildren::-moz-tree-row(dummy)  {
+  background-color: var(--row-grouped-header-bg-color);
+  padding-inline-start: 2px;
+  margin-bottom: 1px;
+}
+
+treechildren::-moz-tree-row(dummy, selected, focus)  {
+  background-color: Highlight;
+}
+
+treechildren::-moz-tree-cell-text(dummy) {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(imapdeleted) {
+  text-decoration: line-through;
+}
+
+#correspondentCol {
+  padding-inline-start: 20px;
+}
+
+/* ..... tree children adjustments ..... */
+
+@media (-moz-windows-default-theme) {
+  /* XXX: Override toolkit tree children styling to reduce the height. */
+  treechildren:not(.autocomplete-treebody)::-moz-tree-row {
+    height: 1.7em;
+  }
+}
+
+/* ..... tab icons ..... */
+
+.tabmail-tab[type="message"] {
+  list-style-image: url("chrome://messenger/skin/icons/server.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+.tabmail-tab[type="message"][IsFeedMessage] {
+  list-style-image: url("chrome://messenger-newsblog/skin/icons/rss-feed.png");
+  -moz-image-region: rect(32px 16px 48px 0);
+  width: 16px;
+  height: 16px;
+}
+
+#attachment-splitter {
+  border: none;
+  border-bottom: 1px solid #A9B7C9;
+  min-height: 0;
+  height: 5px;
+  background-color: transparent;
+  margin-top: -5px;
+  position: relative;
+  z-index: 10;
+  transition: border-width .3s ease-in, border-color .3s;
+}
+
+#attachment-splitter:not([state="collapsed"]) {
+  border-bottom: 1px solid transparent;
+}
+
+#attachment-splitter[state="collapsed"]:hover {
+  border-bottom: 4px solid highlight;
+}
+
+/* ..... tabs ..... */
+
+#tabpanelcontainer {
+  appearance: none;
+}
+
+/* ..... Draw in titlebar ..... */
+
+#messengerWindow[sizemode="normal"] > #titlebar {
+  appearance: -moz-window-titlebar;
+}
+
+#messengerWindow[sizemode="maximized"] > #titlebar {
+  appearance: -moz-window-titlebar-maximized;
+}
+
+@media (-moz-windows-classic) {
+  #messengerWindow[tabsintitlebar] > #navigation-toolbox >
+  #mail-toolbar-menubar2 {
+    border-bottom: none;
+  }
+
+  #messengerWindow[tabsintitlebar][sizemode="normal"] >
+  #navigation-toolbox > #mail-toolbar-menubar2 {
+    margin-top: 4px;
+  }
+}
+
+#titlebar-buttonbox-container {
+  -moz-box-align: start;
+}
+
+/* The button box must appear on top of the navigator-toolbox in order for
+ * click and hover mouse events to work properly for the button in the restored
+ * window state. Otherwise, elements in the navigator-toolbox, like the menubar,
+ * can swallow those events. It will also place the buttons above the fog on
+ * themes with Aero Glass.
+ */
+#titlebar-buttonbox {
+  z-index: 1;
+}
+
+#titlebar-spacer {
+  pointer-events: none;
+}
+
+#titlebar-buttonbox {
+  appearance: -moz-window-button-box;
+  position: relative;
+}
+
+#messengerWindow[sizemode="maximized"] #titlebar-buttonbox {
+  appearance: -moz-window-button-box-maximized;
+}
+
+@media (-moz-windows-classic) {
+  #messengerWindow[sizemode="normal"] > #titlebar > #titlebar-content > #appmenu-button-container {
+    margin-top: 4px;
+  }
+}
+
+#titlebar-min {
+  appearance: -moz-window-button-minimize;
+}
+
+@media not all and (-moz-windows-classic) {
+  #titlebar-min {
+    margin-inline-end: 2px;
+  }
+}
+
+#titlebar-max {
+  appearance: -moz-window-button-maximize;
+}
+
+#messengerWindow[sizemode="maximized"] #titlebar-max {
+  appearance: -moz-window-button-restore;
+}
+
+#titlebar-close {
+  appearance: -moz-window-button-close;
+}
+
+#messengerWindow[tabsintitlebar] .titlebar-placeholder[type="appmenu-button"] {
+  margin-right: 4px;
+}
+
+#messengerWindow[tabsintitlebar] .titlebar-placeholder[type="caption-buttons"] {
+  margin-left: 10px; /* additional space for Aero Snap */
+}
+
+#messengerWindow:not([tabsintitlebar]) .titlebar-placeholder {
+  visibility: collapse;
+}
+
+@media (-moz-windows-compositor) {
+  #tabmail-container {
+    appearance: -moz-win-exclude-glass;
+  }
+
+  @media (-moz-os-version: windows-win7),
+         (-moz-os-version: windows-win8) {
+    #messengerWindow {
+      appearance: -moz-win-borderless-glass;
+      background-color: transparent;
+    }
+
+    /* These should be hidden w/ glass enabled. Windows draws its own buttons. */
+    .titlebar-button {
+      display: none;
+    }
+
+    #messengerWindow[sizemode="maximized"] #titlebar-buttonbox {
+      margin-inline-end: 3px;
+    }
+  }
+
+  #messengerWindow[chromemargin^="0,"][sizemode=normal] #navigation-toolbox {
+    margin-top: -7px;
+  }
+
+  /* Artificially draw window borders that are covered by lwtheme,
+     see bug 591930. Vista/win7 are using different colors than win8 */
+  @media (-moz-os-version: windows-win7) {
+    #messengerWindow[sizemode="normal"] > #titlebar >
+    #titlebar-content:-moz-lwtheme {
+      border-top: 2px solid;
+      -moz-border-top-colors: rgb(37, 44, 51) rgba(255, 255, 255, 0.6);
+    }
+
+    #messengerWindow[sizemode="normal"] > #titlebar >
+    #titlebar-content:-moz-lwtheme:-moz-window-inactive {
+      -moz-border-top-colors: rgb(102, 102, 102) rgba(255, 255, 255, 0.6);
+    }
+
+    #messengerWindow[sizemode="normal"]:-moz-lwtheme > #titlebar > #titlebar-content > #appmenu-button-container {
+      margin-top: -1px;
+    }
+  }
+
+  @media (-moz-os-version: windows-win8) {
+    #messengerWindow[sizemode="normal"] > #titlebar >
+    #titlebar-content:-moz-lwtheme {
+      border-top: 1px solid hsla(209, 67%, 12%, 0.35);
+    }
+
+    /* Use a light text styling on dark window frames */
+    :root[darkwindowframe="true"]:not(:-moz-lwtheme):not(:-moz-window-inactive) {
+      --window-text-color: white;
+    }
+  }
+
+  @media (-moz-os-version: windows-win10),
+         (-moz-os-version: windows-win11) {
+    /* Draw XUL caption buttons and background on Win10/11 */
+    @media (-moz-windows-accent-color-applies: 0) {
+      /* Default styling for when no accent color is applied */
+      #messengerWindow:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+        background-color: white;
+      }
+      @media (-moz-os-version: windows-win11) {
+        #main-window:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+          /* Windows 11 defaults to RGB 243 */
+          background-color: rgb(243,243,243);
+        }
+      }
+      
+      :root:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+        --window-text-color: black;
+      }
+      
+      #titlebar-min:not(:-moz-window-inactive):not(:-moz-lwtheme),
+      #minimize-button:not(:-moz-lwtheme) {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#minimize);
+      }
+
+      #titlebar-max:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#maximize);
+      }
+
+      #messengerWindow[sizemode="maximized"] #titlebar-max:not(:-moz-window-inactive):not(:-moz-lwtheme),
+      #restore-button:not(:-moz-lwtheme) {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#restore);
+      }
+      
+      #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme),
+      #close-button:not(:-moz-lwtheme) {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close);
+      }
+
+      .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover {
+        background-color: hsla(0, 0%, 0%, .17);
+      }
+
+      .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active {
+        background-color: hsla(0, 0%, 0%, .27);
+        transition: none;
+      }
+      
+      #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover,
+      #close-button:not(:-moz-lwtheme):hover {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-highlight);
+        background-color: hsla(0, 86%, 49%, 1);
+      }
+
+      #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active,
+      #close-button:not(:-moz-lwtheme):hover:active	{
+        background-color: hsla(0, 60%, 49%, 0.6);
+        transition: none;
+      }
+    }
+    
+    @media (-moz-windows-accent-color-applies) {
+      /* Styling for when an accent color is applied to the titlebar */
+      #messengerWindow:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+        background-color: -moz-win-accentcolor;
+      }
+      
+      :root:not(:-moz-window-inactive):not(:-moz-lwtheme) {
+        --window-text-color: -moz-win-accentcolortext;
+      }
+
+      #titlebar-min,
+      #minimize-button {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#minimize);
+      }
+
+      #titlebar-max {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#maximize);
+      }
+
+      #messengerWindow[sizemode="maximized"] #titlebar-max,
+      #restore-button {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#restore);
+      }
+
+      #titlebar-close,
+      #close-button {
+        list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close);
+      }
+      
+      .titlebar-button:hover {
+        background-color: hsla(0, 0%, 0%, .17);
+      }
+
+      .titlebar-button:hover:active {
+        background-color: hsla(0, 0%, 0%, .27);
+        transition: none;
+      }
+      
+      @media (-moz-windows-accent-color-is-dark) {
+        /* dark accent color */
+        #titlebar-min,
+        #minimize-button {
+          list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#minimize-highlight);
+        }
+
+        #titlebar-max {
+          list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#maximize-highlight);
+        }
+
+        #messengerWindow[sizemode="maximized"] #titlebar-max,
+        #restore-button {
+          list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#restore-highlight);
+        }
+
+        #titlebar-close {
+          list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-highlight);
+        }
+      
+        .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover {
+          background-color: hsla(0, 0%, 100%, .17);
+        }
+
+        .titlebar-button:not(#titlebar-close):not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active {
+          background-color: hsla(0, 0%, 100%, .27);
+          transition: none;
+        }
+      
+        #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover,
+        #close-button:not(:-moz-lwtheme):hover {
+          background-color: hsla(0, 86%, 49%, 1);
+        }
+
+        #titlebar-close:not(:-moz-window-inactive):not(:-moz-lwtheme):hover:active,
+        #close-button:not(:-moz-lwtheme):hover:active {
+          background-color: hsla(0, 60%, 39%, 1);
+          transition: none;
+        }
+      }
+    }
+
+    #messengerWindow {
+      appearance: -moz-win-glass;
+    }
+    
+    #messengerWindow:-moz-window-inactive:not(:-moz-lwtheme) {
+      background-color: hsl(0, 0%, 95%);
+    }
+
+    /* If we don't have [chromemargin], it means the menubar is active; set the
+       window background to transparent in that case to match it with the DWM
+       color and prevent a drawing delay between title bar and UI region */
+    #messengerWindow:not([chromemargin]):not(:-moz-lwtheme) {
+      background-color: transparent;
+    }
+
+    #titlebar-buttonbox,
+    .titlebar-button {
+      appearance: none !important;
+    }
+
+    .titlebar-button {
+      border: none;
+      margin: 0 !important;
+      padding: 9px 17px;
+      transition: background-color linear 120ms;
+    }
+
+    #messengerWindow[sizemode=maximized] .titlebar-button {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .titlebar-button > .toolbarbutton-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    .titlebar-button:not(:hover) > .toolbarbutton-icon:-moz-window-inactive {
+      opacity: 0.5;
+    }
+
+    #messengerWindow[chromemargin^="0,"][sizemode=normal] #navigation-toolbox {
+      margin-top: -4px;
+    }
+
+    #messengerWindow[sizemode="maximized"] #titlebar-close {
+      padding-right: 19px;
+    }
+    
+    #titlebar-close:hover,
+    #close-button:hover {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-highlight);
+      background-color: hsla(0, 86%, 49%, 1);
+      transition: background-color linear 160ms;
+    }
+
+    #titlebar-close:hover:active,
+    #close-button:hover:active {
+      background-color: hsla(0, 86%, 49%, 0.6); 
+      transition: none;
+    }
+    
+    /* inactive window */
+
+    #titlebar-min:-moz-window-inactive:not(:-moz-lwtheme) {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#minimize-inactive);
+    }
+
+    #titlebar-max:-moz-window-inactive:not(:-moz-lwtheme) {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#maximize-inactive);
+    }
+
+    #messengerWindow[sizemode="maximized"] #titlebar-max:-moz-window-inactive:not(:-moz-lwtheme) {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#restore-inactive);
+    }
+
+    #titlebar-close:-moz-window-inactive:not(:-moz-lwtheme):not(:hover) {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-inactive);
+    }
+    
+    .titlebar-button:-moz-window-inactive:not(:-moz-lwtheme):hover {
+      background-color: hsla(0, 0%, 0%, .17);
+    }
+
+    .titlebar-button:-moz-window-inactive:not(:-moz-lwtheme):hover:active {
+      background-color: hsla(0, 0%, 0%, .27);
+      transition: none;
+    }
+    
+    /* light persona */
+    
+    .titlebar-button:-moz-lwtheme-darktext:hover,
+    #window-controls > toolbarbutton:not(#close-button):-moz-lwtheme-darktext:hover {
+      background-color: hsla(0, 0%, 0%, .17);
+    }
+
+    .titlebar-button:-moz-lwtheme-darktext:hover:active,
+    #window-controls > toolbarbutton:not(#close-button):-moz-lwtheme-darktext:hover:active {
+      background-color: hsla(0, 0%, 0%, .27);
+      transition: none;
+    }
+    
+    #titlebar-min:-moz-lwtheme-darktext,
+    #minimize-button:-moz-lwtheme-darktext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#minimize-outline);
+    }
+
+    #titlebar-max:-moz-lwtheme-darktext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#maximize-outline);
+    }
+
+    #messengerWindow[sizemode="maximized"]:-moz-lwtheme-darktext #titlebar-max:-moz-lwtheme-darktext,
+    #restore-button:-moz-lwtheme-darktext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#restore-outline);
+    }
+
+    #titlebar-close:-moz-lwtheme-darktext,
+    #close-button:-moz-lwtheme-darktext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-outline);
+    }
+    #titlebar-close:hover:-moz-lwtheme-darktext,
+    #close-button:hover:-moz-lwtheme-darktext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-outline);
+    }
+        
+    /* dark persona */
+    
+    .titlebar-button:-moz-lwtheme-brighttext:hover,
+    #window-controls > toolbarbutton:not(#close-button):-moz-lwtheme-brighttext:hover {
+      background-color: hsla(0, 0%, 100%, .27);
+    }
+
+    .titlebar-button:-moz-lwtheme-brighttext:hover:active,
+    #window-controls > toolbarbutton:not(#close-button):-moz-lwtheme-brighttext:hover:active {
+      background-color: hsla(0, 0%, 100%, .37);
+      transition: none;
+    }
+    
+    #titlebar-min:-moz-lwtheme-brighttext,
+    #minimize-button:-moz-lwtheme-brighttext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#minimize-outline-inverted);
+    }
+
+    #titlebar-max:-moz-lwtheme-brighttext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#maximize-outline-inverted);
+    }
+
+    #messengerWindow[sizemode="maximized"]:-moz-lwtheme-brighttext #titlebar-max:-moz-lwtheme-brighttext,
+    #restore-button:-moz-lwtheme-brighttext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#restore-outline-inverted);
+    }
+
+    #titlebar-close:-moz-lwtheme-brighttext,
+    #close-button:-moz-lwtheme-brighttext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-outline-inverted);
+    }
+    #titlebar-close:hover:-moz-lwtheme-brighttext,
+    #close-button:hover:-moz-lwtheme-brighttext {
+      list-style-image: url(chrome://messenger/skin/icons/caption-buttons.svg#close-outline-inverted);
+    }
+
+    /* the 12px image renders a 10px icon, and the 10px upscaled gets rounded to 12.5, which
+     * rounds up to 13px, which makes the icon one pixel too big on 1.25dppx. Fix: */
+    @media (min-resolution: 1.20dppx) and (max-resolution: 1.45dppx) {
+      .titlebar-button > .toolbarbutton-icon {
+        width: 11.5px;
+        height: 11.5px;
+      }
+    }
+
+    /* 175% dpi should result in the same device pixel sizes as 150% dpi. */
+    @media (min-resolution: 1.70dppx) and (max-resolution: 1.95dppx) {
+      .titlebar-button {
+        padding-left: 14.1px;
+        padding-right: 14.1px;
+      }
+
+      .titlebar-button > .toolbarbutton-icon {
+        width: 10.8px;
+        height: 10.8px;
+      }
+    }
+
+    /* 225% dpi should result in the same device pixel sizes as 200% dpi. */
+    @media (min-resolution: 2.20dppx) and (max-resolution: 2.45dppx) {
+      .titlebar-button {
+        padding-left: 15.3333px;
+        padding-right: 15.3333px;
+      }
+
+      .titlebar-button > .toolbarbutton-icon {
+        width: 10.8px;
+        height: 10.8px;
+      }
+    }
+
+    /* 275% dpi should result in the same device pixel sizes as 250% dpi. */
+    @media (min-resolution: 2.70dppx) and (max-resolution: 2.95dppx) {
+      .titlebar-button > .toolbarbutton-icon {
+        width: 10.8px;
+        height: 10.8px;
+      }
+    }
+  }
+
+  @media (-moz-os-version: windows-win8),
+         (-moz-os-version: windows-win10),
+         (-moz-os-version: windows-win11) {
+    /* Fade text stylings on window inactivity */
+    :root:not(:-moz-lwtheme):-moz-window-inactive {
+      --window-text-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  #messengerWindow[sizemode="normal"] #titlebar-buttonbox:-moz-lwtheme {
+    margin-top: -2px;
+  }
+
+  #tabs-toolbar:not(:-moz-lwtheme),
+  #mail-menubar:not(:-moz-window-inactive) > menu:not(:-moz-lwtheme) {
+    color: var(--window-text-color);
+  }
+}
+
+#folderPane-toolbar {
+  border-top-style: none;
+}
+
+#accountCentralBox,
+#threadTree {
+  border-inline-end: none;
+}
+
+#messagepanebox {
+  border-top-width: 0px;
+  border-inline-start: none;
+}
+
+.tabmail-tab[type="message"] {
+  list-style-image: url("chrome://messenger/skin/icons/server.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+#viewPickerPopup menu,
+#viewPickerPopup menuitem {
+  appearance: none;
+}
+
+@media (-moz-windows-default-theme) {
+  #viewPickerPopup > menu,
+  #viewPickerPopup > menuitem {
+    margin: 1px;
+  }
+
+  #viewPickerPopup menu,
+  #viewPickerPopup menuitem {
+    height: 2em;
+    border: 1px solid transparent;
+  }
+
+  #folderPaneHeader {
+    appearance: none;
+    background-color: #f8f8f8;
+    border-top: 0px;
+    border-bottom: 1px solid #a9b1b8;
+  }
+
+  #folderTree {
+    appearance: none;
+    background-color: -moz-Dialog;
+    border-bottom: none;
+    border-left: none;
+  }
+
+  @media (-moz-os-version: windows-win7) {
+    #folderTree {
+      background-color: #eef3fa;
+    }
+  }
+
+  @media (-moz-os-version: windows-win10),
+         (-moz-os-version: windows-win11) {
+    #folderTree {
+      background-color: #fafafa;
+    }
+  }
+
+  treechildren::-moz-tree-line(selected, focus),
+  tree[seltype="cell"] > treechildren::-moz-tree-line(active, selected, focus) {
+    border-color: -moz-DialogText;
+  }
+
+  #viewPicker > .menulist-label-box > .menulist-label,
+  #locationFolders > .menulist-label-box > .menulist-label {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+#viewPicker > .menulist-label-box > .menulist-icon,
+#locationFolders > .menulist-label-box > .menulist-icon {
+  min-height: 16px;
+}
+
+@media (-moz-windows-default-theme) and (-moz-os-version: windows-win7) {
+  menulist {
+    border-radius: 2px;
+  }
+
+  menulist[open="true"] {
+    text-shadow: none;
+    transition: none;
+  }
+
+  #viewPickerPopup menu,
+  #viewPickerPopup menuitem {
+    border-radius: 2px;
+  }
+
+  #viewPickerPopup menu[_moz-menuactive="true"],
+  #viewPickerPopup menuitem[_moz-menuactive="true"] {
+    color: -moz-DialogText;
+    border-color: rgb(184, 214, 251);
+    background-image: linear-gradient(rgba(131, 183, 249, .05), rgba(131, 183, 249, .16));
+    background-color: transparent;
+  }
+
+  #status-bar,
+  #folderPane-toolbar {
+    background-color: hsl(210, 75%, 92%);
+  }
+}
+
+@media (-moz-windows-default-theme) and (-moz-os-version: windows-win7),
+       (-moz-windows-default-theme) and (-moz-os-version: windows-win8) {
+  @media (-moz-windows-compositor) {
+    #mail-toolbar-menubar2:not(:-moz-lwtheme) {
+      text-shadow: 0 0 0.5em white, 0 0 0.5em white, 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    #mail-menubar:not(:-moz-lwtheme):not(:-moz-window-inactive) {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: var(--toolbarbutton-border-radius);
+    }
+
+    #mail-menubar > menu:not(:-moz-lwtheme):-moz-window-inactive {
+      color: CaptionText;
+    }
+
+    #messengerWindow[sizemode=normal] #tabpanelcontainer {
+      border: 1px solid rgba(10%, 10%, 10%, .4);
+      border-top: none;
+      background-clip: padding-box;
+    }
+
+    #messengerWindow[sizemode=normal] statusbar {
+      appearance: none;
+      margin-top: -1px;
+      border: 1px solid rgba(10%, 10%, 10%, .4);
+      border-top-color: threedshadow;
+      border-radius: 1px 1px 0 0;
+      background-clip: padding-box;
+    }
+  }
+}
+
+@media (-moz-windows-default-theme) and (-moz-os-version: windows-win8),
+       (-moz-windows-default-theme) and (-moz-os-version: windows-win10),
+       (-moz-windows-default-theme) and (-moz-os-version: windows-win11) {
+  #folderPane-toolbar {
+    border-bottom-color: #c2c2c2;
+  }
+}
+
+@media (-moz-windows-default-theme) and (-moz-os-version: windows-win8) {
+  #viewPickerPopup menu[_moz-menuactive="true"],
+  #viewPickerPopup menuitem[_moz-menuactive="true"] {
+    color: -moz-DialogText;
+    border-color: rgb(132, 172, 221);
+    background-color: rgba(131, 183, 249, .16);
+  }
+}
+
+@media (-moz-windows-default-theme) and (-moz-os-version: windows-win10),
+       (-moz-windows-default-theme) and (-moz-os-version: windows-win11) {
+  #viewPickerPopup menu[_moz-menuactive="true"],
+  #viewPickerPopup menuitem[_moz-menuactive="true"] {
+    background-color: #91c9f7;
+  }
+}
+
+@media (-moz-windows-glass) {
+  /* lesser transparency on Glass background */
+  #tabbar-toolbar menulist:not(:-moz-lwtheme):not([open="true"]) {
+    background-color: rgba(227, 237, 246, .7);
+  }
+
+  /* lesser transparency on Glass background */
+  #tabbar-toolbar menulist:not(:-moz-lwtheme):not([open="true"]):hover {
+    background-color: rgba(136, 197, 213, .85);
+  }
+
+  #tabbar-toolbar #viewPickerLabel:not(:-moz-lwtheme):not(:-moz-window-inactive) {
+    margin-inline-start: 4px;
+    margin-inline-end: 0;
+    padding-inline-start: 2px;
+    padding-inline-end: 5px;
+    background-color: rgba(255, 255, 255, .3);
+    border-radius: 4px;
+  }
+
+  #folderPane-toolbar {
+    border-bottom-color: #aabccf;
+  }
+}
+
+#viewPicker > .menulist-label-box > .menulist-icon,
+#locationFolders > .menulist-label-box > .menulist-icon {
+  min-height: 16px;
+}
+
+#viewPickerPopup > menu > .menu-text {
+  appearance: none;
+  margin-inline-start: 0 !important;
+  padding-inline-start: 0 !important;
+}
+
+#viewPickerTagsPopup > menuitem > .menu-iconic-text,
+#viewPickerCustomViewsPopup > menuitem > .menu-iconic-text {
+  padding: 1px 3px;
+}
+
+@media not all and (-moz-windows-compositor) {
+  #mail-toolbar-menubar2[autohide="false"] +
+  #tabs-toolbar > .titlebar-placeholder {
+    display: none;
+  }
+
+  @media (-moz-windows-default-theme) {
+    #messengerWindow:not(:-moz-lwtheme) {
+      background-color: rgb(185, 209, 234);
+    }
+    #messengerWindow:not(:-moz-lwtheme):-moz-window-inactive {
+      background-color: rgb(215, 228, 242);
+    }
+
+    #messengerWindow[sizemode="normal"] > #titlebar > #titlebar-content {
+      border-top-width: 2px;
+      -moz-border-top-colors: #4D4D4D #E9ECF3;
+    }
+
+    #messengerWindow[sizemode="normal"] #titlebar-buttonbox {
+      margin-top: -2px;
+    }
+  }
+}
+
+/* ===== Noia Fox safe visual overrides; no legacy titlebar/appmenu/tab geometry ===== */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+/* ===== mailWindow1.css ================================================
+  == Styles for the main Mail window in the default layout scheme.
+  ======================================================================= */
+
+
+
+
+
+
+
+
+
+
+/* give the toolbox a min-height of 41px for Australis theme */
+.mail-toolbox:not([mode="full"]) > toolbar:only-of-type,
+.mail-toolbox[mode="full"][labelalign="end"] > toolbar:only-of-type {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+
+.mail-toolbox[mode="text"]:not([mode="full"]) > toolbar:only-of-type {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* Don't use the listbox appearance as that gives us a blue-grey top border
+   that collides with the primary toolbar border */
+#threadTree, #folderTree {
+  -moz-appearance:  none;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+#messengerBox {
+  background-color: #F0F0F0;
+}
+
+#tabmail:-moz-lwtheme {
+  text-shadow: none;
+}
+
+#folderUnreadCol,
+#folderTotalCol,
+#folderSizeCol {
+  text-align: right;
+}
+
+#folderNameCol [sortDirection="ascending"],
+#folderNameCol [sortDirection="descending"] {
+  list-style-image: none;
+}
+
+/* ::::: thread decoration ::::: */
+
+treechildren::-moz-tree-row(dummy)  {
+  background-color:  #F0F0F0;
+  margin-bottom: 1px;
+  -moz-padding-start: 2px;
+}
+
+treechildren::-moz-tree-row(dummy, selected) {
+  background-color: #F0F0F0;
+}
+
+treechildren::-moz-tree-row(dummy, selected, focus)  {
+  background-color: #3399FF;
+}
+
+treechildren::-moz-tree-cell-text(dummy) {
+  font-weight: bold;
+}
+
+treechildren::-moz-tree-cell-text(read) {
+  font-weight: normal;
+}
+
+treechildren::-moz-tree-cell-text(unread) {
+  font-weight: bold;
+}
+
+/*
+treechildren::-moz-tree-cell-text(subjectCol, unread) {
+  background-color: rgba(100,255,0,0.4);
+}
+*/
+
+treechildren::-moz-tree-cell-text(imapdeleted) {
+  text-decoration: line-through;
+}
+
+/* on a collapsed thread, if the top level message is read, but the thread has
+ * unread children, underline the text.  4.x mac did this, very slick 
+ */
+treechildren::-moz-tree-cell-text(container, closed, hasUnread, read) {
+  text-decoration: underline;
+}
+
+/* ::::: message column icons ::::: */
+
+.treecol-image image {
+  -moz-padding-end: 4px;
+}
+
+/* ..... column picker ..... */
+
+.tree-columnpicker-icon  {
+  list-style-image: url("chrome://messenger/skin/icons/columnpicker.svg");
+}
+
+/* ..... thread column ..... */
+
+.threadColumnHeader {
+  list-style-image: url("chrome://messenger/skin/icons/thread.png");
+}
+
+treechildren::-moz-tree-image(threadCol, container) {
+  list-style-image: url("chrome://messenger/skin/icons/thread.png");
+}
+
+treechildren::-moz-tree-image(news, threadCol, watch) {
+  list-style-image: url("chrome://messenger/skin/icons/thread-watched.png");
+}
+
+treechildren::-moz-tree-image(news, threadCol, ignore) {
+  list-style-image: url("chrome://messenger/skin/icons/thread-ignored.png");
+}
+
+treechildren::-moz-tree-image(news, threadCol, ignoreSubthread) {
+  list-style-image: url("chrome://messenger/skin/icons/message-ignored.png");
+}
+
+/* ..... read column ..... */
+
+.readColumnHeader {
+  list-style-image: url("chrome://messenger/skin/icons/read.png");
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader) {
+  list-style-image: url("chrome://messenger/skin/icons/readmail.png");
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader, dummy) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader, unread) {
+  list-style-image: url("chrome://messenger/skin/icons/unreadmail.png");
+}
+
+/* ..... attachment column ..... */
+
+.attachmentColumnHeader {
+  list-style-image: url("chrome://messenger/skin/icons/attachment-col.png");
+}
+
+treechildren::-moz-tree-image(attachmentCol, attach) {
+  list-style-image: url("chrome://messenger/skin/icons/attachment-col.png");
+  -moz-margin-start: 3px;
+}
+
+/* ..... flag column ..... */
+
+.flagColumnHeader {
+  list-style-image: url("chrome://messenger/skin/icons/flag.png");
+}
+
+treechildren::-moz-tree-image(flaggedCol) {
+  list-style-image: url("chrome://messenger/skin/icons/flag-empty.png");
+  -moz-padding-end: 2px;
+}
+
+treechildren::-moz-tree-image(flaggedCol, dummy) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(flaggedCol, flagged) {
+  list-style-image: url("chrome://messenger/skin/icons/flag.png");
+}
+
+/* ..... junkStatus column ..... */
+
+.junkStatusHeader {
+  list-style-image: url("chrome://messenger/skin/icons/Junk-small.png");
+  -moz-padding-end: 3px;
+}
+
+/* "unknown" now looks like "not junk".  see bug #182386 */
+treechildren::-moz-tree-image(junkStatusCol) {
+  list-style-image: url("chrome://messenger/skin/icons/readmail.png");
+  -moz-padding-start: 0px;
+}
+
+treechildren::-moz-tree-image(junkStatusCol, junk) {
+  list-style-image: url("chrome://messenger/skin/icons/folder.png");
+  -moz-image-region: rect(0 128px 16px 112px);
+}
+
+treechildren::-moz-tree-image(junkStatusCol, dummy) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(junkStatusCol, notjunk) {
+  list-style-image: url("chrome://messenger/skin/icons/readmail.png");
+  -moz-padding-start: 0px;
+}
+
+/* ..... subject column ..... */
+
+#subjectCol {
+  -moz-padding-start: 23px;
+}
+
+#subjectCol[primary="true"] {
+  -moz-padding-start: 30px;
+}
+
+treechildren::-moz-tree-image(subjectCol) {
+  -moz-margin-end: 2px;
+  list-style-image: url("chrome://messenger/skin/icons/message.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(subjectCol, dummy) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(subjectCol, forwarded) {
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+treechildren::-moz-tree-image(subjectCol, replied) {
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+treechildren::-moz-tree-image(subjectCol, replied, forwarded) {
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+treechildren::-moz-tree-image(subjectCol, new) {
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+
+/* IMPORTANT: make sure the imap-deleted column always comes after the replied/forwarded style rules.
+   This ensures that we show that the message is marked as deleted over status information. */
+
+treechildren::-moz-tree-image(subjectCol, imapdeleted) {
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+treechildren::-moz-tree-cell-text(subjectCol) {
+  -moz-padding-start: 5px !important;
+  -moz-padding-end: 5px !important;
+}
+
+#sizeCol,
+#unreadCol,
+#totalCol {
+  text-align: right;
+}
+
+#folderLocationPopup menu,
+#folderLocationPopup menuitem ,
+.folderLocationPopup menuitem,
+.folderLocationPopup menu{
+  padding: 1px;
+}
+
+#folderLocationPopup .menu-text,
+#folderLocationPopup .menu-iconic-text {
+  -moz-margin-start: 4px !important;
+}
+
+.folderLocationPopup .menu-text,
+.folderLocationPopup .menu-iconic-text {
+  -moz-margin-start: 8px !important;
+}
+
+/* We need to hide overflow in messagepanebox, so that resizing doesn't spill
+   header content over the statusbar.
+   */
+
+#messagepanebox {
+  overflow: hidden;
+}
+
+/* ..... folder pane adjustments ..... */
+
+#folderpane-title {
+  -moz-padding-start: 12px;
+  -moz-padding-end: 8px;
+}
+
+.folderview-cycler {
+  -moz-padding-end: 0px;
+}
+
+.folderview-cycler[dir="prev"],
+.folderview-cycler[dir="next"]:-moz-locale-dir(rtl) {
+  list-style-image: url("chrome://messenger/skin/icons/arrow/foldercycler-arrow-left.png");
+}
+
+.folderview-cycler[dir="next"],
+.folderview-cycler[dir="prev"]:-moz-locale-dir(rtl) {
+  list-style-image: url("chrome://messenger/skin/icons/arrow/foldercycler-arrow-right.png");
+}
+
+/* ..... splitter adjustments ..... */
+
+#mailContent[layout="standard"] #threadpane-splitter {
+  /* Overlap the folder pane splitter to make the splitters appear unified. */
+  -moz-margin-start: -1px;
+}
+
+#mailContent[layout="standard"] #folderpane_splitter:-moz-locale-dir(rtl) {
+  /* Don't draw the splitter's border here... */
+  border-left: 0;
+}
+
+#mailContent[layout="standard"] #threadPaneBox:-moz-locale-dir(rtl),
+#mailContent[layout="standard"] #messagepanebox:-moz-locale-dir(rtl){
+  /* ... draw it here instead! (This removes the white highlight just to the
+     right of the thread pane splitter so everything looks pretty.) */
+  margin-right: -2px;
+  border-right: 2px solid;
+  -moz-border-right-colors: #FFFFFF #A0A0A0;
+}
+
+#mailContent[layout="standard"] #threadPaneBox:-moz-locale-dir(rtl) {
+  /* Make sure we have a white dot in the top-left corner where the splitters
+     meet. */
+  margin-bottom: -2px;
+  padding-bottom: 2px;
+}
+
+#mailContent[layout="wide"] #folderpane_splitter {
+  /* Make this draw above the thread pane splitter so that we overlap its top
+     border. This will make the splitters appear unified. */
+  position: relative;
+  z-index: 2;
+  margin-bottom: -1px;
+}
+
+#mailContent[layout="wide"] #threadpane-splitter {
+  /* Don't draw the splitter's border here... */
+  border-top: 0;
+}
+
+#mailContent[layout="wide"] #threadPaneBox,
+#mailContent[layout="wide"] #folderPaneBox {
+  /* ... draw it here instead! (This removes the white highlight just below the
+     folder pane splitter so everything looks pretty.) */
+  position: relative;
+  z-index: 1;
+  margin-bottom: -2px;
+  border-bottom: 2px solid;
+  -moz-border-bottom-colors: #FFFFFF #A0A0A0;
+}
+
+#mailContent[layout="wide"] #folderPaneBox:-moz-locale-dir(ltr),
+#mailContent[layout="wide"] #threadPaneBox:-moz-locale-dir(rtl) {
+  /* Make sure we have a white dot in the top-left corner where the splitters
+     meet. */
+  margin-right: -2px;
+  padding-right: 2px;
+}
+
+/* ..... status bar adjustments ..... */
+
+#quotaMeter {
+  min-width: 4em;
+  max-width: 4em;
+  border: 1px solid #A0A0A0;
+}
+#quotaPanel .progress-bar {
+  -moz-appearance: none;
+  background-color: #88AAFF;
+  opacity: .5;
+}
+#quotaPanel[alert="warning"] .progress-bar {
+  background-color: orange;
+}
+#quotaPanel[alert="critical"] .progress-bar {
+  background-color: red;
+  opacity: .6;
+}
+#quotaLabel {
+  text-align: center;
+}
+
+
+
+
+
+/* ..... tabs ..... */
+
+#tabpanelcontainer {
+  -moz-appearance: none;
+}
+
+
+#subjectCol {
+  -moz-padding-start: 20px;
+}
+
+#subjectCol[primary="true"] {
+  -moz-padding-start: 30px;
+}
+
+@media not all and (-moz-windows-default-theme) {
+  #subjectCol {
+    -moz-padding-start: 17px;
+  }
+
+  #subjectCol[primary="true"] {
+    -moz-padding-start: 27px;
+  }
+}
+
+.threadColumnHeader {
+  -moz-padding-end: 2px;
+}
+
+treechildren::-moz-tree-image(news, threadCol, watch) {
+  -moz-margin-start: -2px;
+}
+
+#folderpane_splitter,
+#threadpane-splitter:not([orient="vertical"]) {
+  border: none;
+  border-left: 1px solid #A9B7C9;
+  min-width: 0;
+  width: 5px;
+  background-color: transparent;
+  margin-top: 0;
+  -moz-margin-end: -4px;
+  position: relative;
+  z-index: 10;
+  transition: border-width .3s ease-in;
+}
+
+/* Until Bug 621351 is fixed we need border-right and border-left in
+ * combination with -moz-locale-dir instead of -moz-border-end and
+ * -moz-border-start for transition
+ */
+
+#folderpane_splitter:-moz-locale-dir(rtl),
+#threadpane-splitter:not([orient="vertical"]):-moz-locale-dir(rtl) {
+  border-right: 1px solid #A9B7C9;
+  border-left: none;
+}
+
+#folderpane_splitter[state="collapsed"]:hover:-moz-locale-dir(ltr) {
+  border-left: 4px solid highlight;
+}
+
+#folderpane_splitter[state="collapsed"]:hover:-moz-locale-dir(rtl) {
+  border-right: 4px solid highlight;
+}
+
+#mailContent[layout="wide"] #folderpane_splitter {
+  margin-bottom: 0;
+}
+
+#threadpane-splitter,
+#attachment-splitter {
+  border: none;
+  border-bottom: 1px solid #A9B7C9;
+  min-height: 0;
+  height: 5px;
+  background-color: transparent;
+  margin-top: -5px;
+  position: relative;
+  z-index: 10;
+  transition: border-width .3s ease-in;
+}
+
+#attachment-splitter:not([state="collapsed"]) {
+  border-bottom: 1px solid transparent;
+}
+
+#attachment-splitter,
+#threadpane-splitter[state="collapsed"] {
+  transition: border-color .3s;
+}
+
+#threadpane-splitter[state="collapsed"]:hover,
+#attachment-splitter[state="collapsed"]:hover {
+  border-bottom: 4px solid highlight;
+}
+
+#accountCentralBox,
+#threadTree {
+  -moz-border-end: none;
+}
+
+#messagepanebox {
+  border-top-width: 0px;
+  -moz-border-start: none;
+}
+
+.folderview-cycler {
+  -moz-padding-start: 5px;
+  -moz-padding-end: 5px;
+}
+
+.treecol-image image {
+  -moz-padding-start: 1px;
+  -moz-padding-end: 2px;
+}
+
+.junkStatusHeader {
+  -moz-padding-end: 2px;
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader) {
+  -moz-padding-start: 0px;
+  -moz-margin-start: -3px;
+}
+/*
+treechildren::-moz-tree-image(attachmentCol, attach) {
+  -moz-margin-start: 0px;
+}
+
+treechildren::-moz-tree-image(junkStatusCol) {
+  -moz-margin-start: -3px;
+}
+*/
+#viewPickerPopup menu,
+#viewPickerPopup menuitem {
+  -moz-appearance: none;
+}
+
+#folderLocationPopup menu,
+#folderLocationPopup menuitem {
+  -moz-padding-start: 2px;
+}
+
+#folderLocationPopup menuitem:first-child {
+  padding-top: 3px;
+  padding-bottom: 4px;
+}
+
+@media (-moz-windows-default-theme) {
+  #afterViewPickerUnreadSeparator,
+  #afterViewPickerCustomViewsSeparator {
+    -moz-appearance: none;
+    margin: 3px 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top-color: ThreeDLightShadow;
+  }
+
+  #viewPicker > .menulist-label-box > .menulist-label,
+  #locationFolders > .menulist-label-box > .menulist-label {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  #locationFolders > .menulist-label-box > .menulist-label {
+    -moz-margin-start: 2px !important;
+  }
+  
+  #viewPicker:focus:not([open="true"]) > .menulist-label-box > .menulist-label,
+  #locationFolders:focus:not([open="true"]) > .menulist-label-box > .menulist-label  {
+    outline: 1px solid transparent;
+  }
+  
+  #viewPicker:-moz-focusring:not([open="true"]),
+  #locationFolders:-moz-focusring:not([open="true"]) {
+    border: 1px solid #60B4E0;
+  }
+}
+
+#viewPicker > .menulist-label-box > .menulist-icon,
+#locationFolders > .menulist-label-box > .menulist-icon {
+  min-height: 16px;
+}
+
+@media (-moz-windows-default-theme) {
+  #folderPaneHeader {
+    -moz-appearance: none;
+    background-color: #f8f8f8;
+    border-top: 0px;
+    border-bottom: 1px solid #a9b1b8;
+  }
+
+  #folderTree {
+    -moz-appearance: none;
+    background-image: url("chrome://messenger/skin/grain.png");
+    border-bottom: none;
+    border-left: none;
+  }
+
+  #folderTree treechildren::-moz-tree-cell(dropOn) {
+    background-image: linear-gradient(rgba(255, 255, 255, .7),
+                                      rgba(255, 255, 255, .45));
+    background-color: Highlight;
+    border-radius: 3px;
+  }
+
+  #folderTree treechildren::-moz-tree-cell-text(dropOn) {
+    color: -moz-FieldText;
+  }
+
+  #status-bar {
+    background-color: hsl(210, 75%, 92%);
+  }
+}

@@ -1,0 +1,64 @@
+skin global noiaepyrus core/global/
+skin mozapps noiaepyrus core/mozapps/
+skin communicator noiaepyrus core/communicator/
+skin editor noiaepyrus core/editor/
+skin messenger noiaepyrus core/messenger/
+skin messenger-newsblog noiaepyrus core/messenger-newsblog/
+skin calendar noiaepyrus core/calendar/
+skin lightning noiaepyrus core/lightning/
+skin noiawin noiaepyrus windows-delta/ os=WINNT
+
+# Windows-only deltas. The shared core is the tested Linux tree; these
+# overrides reconstruct the tested rc1 Windows tree without duplicating it.
+override chrome://global/skin/console/itemSelected.png chrome://noiawin/skin/global/console/itemSelected.png os=WINNT
+override chrome://global/skin/icons/close-inverted-win7.png chrome://noiawin/skin/global/icons/close-inverted-win7.png os=WINNT
+override chrome://global/skin/icons/close-inverted-win7@2x.png chrome://noiawin/skin/global/icons/close-inverted-win7@2x.png os=WINNT
+override chrome://global/skin/icons/close-inverted.svg chrome://noiawin/skin/global/icons/close-inverted.svg os=WINNT
+override chrome://global/skin/icons/close-win7.png chrome://noiawin/skin/global/icons/close-win7.png os=WINNT
+override chrome://global/skin/icons/close-win7@2x.png chrome://noiawin/skin/global/icons/close-win7@2x.png os=WINNT
+override chrome://global/skin/tree/twisty-preWin10.svg chrome://noiawin/skin/global/tree/twisty-preWin10.svg os=WINNT
+override chrome://global/skin/tree/twisty.svg chrome://noiawin/skin/global/tree/twisty.svg os=WINNT
+override chrome://mozapps/skin/extensions/extensionGeneric-48.png chrome://noiawin/skin/mozapps/extensions/extensionGeneric-48.png os=WINNT
+override chrome://mozapps/skin/plugins/pluginGeneric-48.png chrome://noiawin/skin/mozapps/plugins/pluginGeneric-48.png os=WINNT
+override chrome://messenger/skin/accountcentral/junk.png chrome://noiawin/skin/messenger/accountcentral/junk.png os=WINNT
+override chrome://messenger/skin/appmenu-dropmarker.png chrome://noiawin/skin/messenger/appmenu-dropmarker.png os=WINNT
+override chrome://messenger/skin/icons/appmenu-icons.png chrome://noiawin/skin/messenger/icons/appmenu-icons.png os=WINNT
+override chrome://messenger/skin/icons/arrow-dn-inverted.png chrome://noiawin/skin/messenger/icons/arrow-dn-inverted.png os=WINNT
+override chrome://messenger/skin/icons/caption-buttons.svg chrome://noiawin/skin/messenger/icons/caption-buttons.svg os=WINNT
+override chrome://messenger/skin/icons/quick-search-icons.png chrome://noiawin/skin/messenger/icons/quick-search-icons.png os=WINNT
+override chrome://messenger/skin/icons/toolbarbutton-arrow-inverted.svg chrome://noiawin/skin/messenger/icons/toolbarbutton-arrow-inverted.svg os=WINNT
+override chrome://messenger/skin/icons/toolbarbutton-arrow.svg chrome://noiawin/skin/messenger/icons/toolbarbutton-arrow.svg os=WINNT
+override chrome://messenger/skin/mailWindow1.css chrome://noiawin/skin/messenger/mailWindow1.css os=WINNT
+override chrome://messenger/skin/messenger.css chrome://noiawin/skin/messenger/messenger.css os=WINNT
+override chrome://messenger/skin/primaryToolbar.css chrome://noiawin/skin/messenger/primaryToolbar.css os=WINNT
+override chrome://messenger/skin/tabs/arrow-left-inverted.svg chrome://noiawin/skin/messenger/tabs/arrow-left-inverted.svg os=WINNT
+override chrome://messenger/skin/tabs/arrow-left.svg chrome://noiawin/skin/messenger/tabs/arrow-left.svg os=WINNT
+override chrome://calendar/skin/cal-icon24.png chrome://noiawin/skin/calendar/cal-icon24.png os=WINNT
+override chrome://calendar/skin/cal-icon32.png chrome://noiawin/skin/calendar/cal-icon32.png os=WINNT
+override chrome://calendar/skin/calendar-event-dialog.css chrome://noiawin/skin/calendar/calendar-event-dialog.css os=WINNT
+override chrome://calendar/skin/calendar-occurrence-prompt-aero.png chrome://noiawin/skin/calendar/calendar-occurrence-prompt-aero.png os=WINNT
+override chrome://calendar/skin/calendar-occurrence-prompt.png chrome://noiawin/skin/calendar/calendar-occurrence-prompt.png os=WINNT
+override chrome://calendar/skin/calendar-task-tree.css chrome://noiawin/skin/calendar/calendar-task-tree.css os=WINNT
+override chrome://calendar/skin/calendar-task-view.css chrome://noiawin/skin/calendar/calendar-task-view.css os=WINNT
+override chrome://calendar/skin/calendar-unifinder.css chrome://noiawin/skin/calendar/calendar-unifinder.css os=WINNT
+override chrome://calendar/skin/calendar-views.css chrome://noiawin/skin/calendar/calendar-views.css os=WINNT
+override chrome://calendar/skin/today-pane.css chrome://noiawin/skin/calendar/today-pane.css os=WINNT
+override chrome://calendar/skin/widgets/calendar-widgets.css chrome://noiawin/skin/calendar/widgets/calendar-widgets.css os=WINNT
+override chrome://lightning/skin/imip-aero.png chrome://noiawin/skin/lightning/imip-aero.png os=WINNT
+override chrome://lightning/skin/lightning-toolbar.css chrome://noiawin/skin/lightning/lightning-toolbar.css os=WINNT
+override chrome://lightning/skin/lightning.css chrome://noiawin/skin/lightning/lightning.css os=WINNT
+override chrome://lightning/skin/mode-switch-icons-aero.png chrome://noiawin/skin/lightning/mode-switch-icons-aero.png os=WINNT
+override chrome://lightning/skin/mode-switch-icons-inverted.png chrome://noiawin/skin/lightning/mode-switch-icons-inverted.png os=WINNT
+
+skin calendar-common noiaepyrus common/calendar-common/
+skin lightning-common noiaepyrus common/lightning-common/
+skin gdata-provider noiaepyrus common/gdata-provider/
+skin devtools noiaepyrus common/devtools/
+skin browser noiaepyrus common/browser/
+skin chat noiaepyrus common/chat/
+skin application noiaepyrus common/application/thunderbird/ application={29877c1d-27df-4421-9a79-382c31470151}
+skin os_special noiaepyrus common/os_special/linux/ os=Linux
+skin os_special noiaepyrus common/os_special/XP/ os=WINNT osversion<6
+skin os_special noiaepyrus common/os_special/aero/ os=WINNT osversion>=6
+style about:addons chrome://messenger/skin/extensionsOverlay.css
+style about:addons chrome://messenger/skin/messenger.css
