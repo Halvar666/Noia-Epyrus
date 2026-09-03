@@ -6,7 +6,7 @@ The project does **not** use ClassicTB2 as its structural base. The runtime skel
 
 ## Status
 
-Current release candidate: **1.0.0rc1**
+Current release candidate: **1.0.0rc2**
 
 Test target:
 
@@ -15,10 +15,10 @@ Test target:
 
 Compatibility is intentionally restricted to Epyrus **2.2.1** until later Epyrus versions are explicitly tested.
 
-Canonical 1.0.0rc1 release artifact:
+Canonical 1.0.0rc2 release artifact:
 
-- XPI size: **4,665,742 bytes (4.45 MiB)**
-- SHA256: `1d63ca7561ed5c4e08ce97cfa1ba375ddecc50a11da72d19f14874ecd98f0884`
+- XPI size: **4,667,623 bytes (4.45 MiB)**
+- SHA256: `945213e6071bf5c687310451913b77290d12fcc1b44b2e4738658369625de05e`
 
 ## Highlights
 
@@ -35,7 +35,7 @@ Canonical 1.0.0rc1 release artifact:
 
 1. Open Epyrus.
 2. Open **Tools → Add-ons → Appearance**.
-3. Install the `Noia_Epyrus_1.0.0rc1.xpi` file.
+3. Install the `Noia_Epyrus_1.0.0rc2.xpi` file.
 4. Activate **Noia Epyrus** and restart Epyrus if requested.
 
 ## Repository layout

@@ -4,6 +4,12 @@ Noia Epyrus is derived directly and indirectly from **Noia Fox 3.1.5 by David Vi
 
 This file documents the principal modifications made for the Noia Epyrus derivative work, in accordance with the source-distribution requirements of Mozilla Public License Version 1.1.
 
+## 2026-09-03 — Noia Epyrus 1.0.0rc2
+
+- Fixed Windows caption-button glyph rendering with the Menu Bar hidden by moving the native Epyrus `caption-buttons.svg` into the shared messenger skin and removing the fragment-breaking Windows override.
+- Recolored the Windows AppMenu button from the old Firefox-era orange palette to a blue Pale Moon-style gradient while retaining the native Epyrus titlebar/AppMenu geometry.
+- Kept Linux runtime styling unchanged by these Windows-specific fixes.
+
 ## 2026-09-03 — Noia Epyrus 1.0.0rc1
 
 - Renamed the Epyrus port for release as **Noia Epyrus**.

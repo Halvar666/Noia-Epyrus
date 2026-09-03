@@ -2,6 +2,15 @@
 
 All notable public changes to Noia Epyrus are documented here.
 
+## 1.0.0rc2 — 2026-09-03
+
+Second public release candidate.
+
+- Fixed invisible Windows minimize/maximize/restore/close glyphs when the Menu Bar is hidden by serving `caption-buttons.svg` directly from the shared messenger skin instead of through a Windows override.
+- Replaced the orange Firefox-era Windows AppMenu button with a blue Pale Moon-style gradient, including hover and pressed/open states.
+- Preserved native Epyrus Windows titlebar geometry and AppMenu behavior.
+- Retained the compact shared-core + Windows-delta package layout.
+
 ## 1.0.0rc1 — 2026-09-03
 
 First public release candidate.

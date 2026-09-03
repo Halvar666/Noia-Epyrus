@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-XPI="$ROOT/dist/Noia_Epyrus_1.0.0rc1.xpi"
+XPI="$ROOT/dist/Noia_Epyrus_1.0.0rc2.xpi"
 
 [[ -f "$XPI" ]] || { echo "Missing build: $XPI" >&2; exit 1; }
 unzip -tq "$XPI" >/dev/null
@@ -21,7 +21,7 @@ with zipfile.ZipFile(xpi) as z:
         e=desc.find(f'em:{tag}', ns)
         return e.text if e is not None else None
     assert val('name') == 'Noia Epyrus', val('name')
-    assert val('version') == '1.0.0rc1', val('version')
+    assert val('version') == '1.0.0rc2', val('version')
     app=desc.find('em:targetApplication', ns)
     ad=app.find('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}Description')
     mn=ad.find('em:minVersion', ns).text
@@ -36,7 +36,6 @@ with zipfile.ZipFile(xpi) as z:
         parts=s.split()
         if parts[0]=='skin' and len(parts)>=4:
             pkg, rel = parts[1], parts[3].rstrip('/')+'/'
-            # All registered roots must physically exist in the archive.
             assert any(n.startswith(rel) for n in names), (pkg,rel)
             skin_roots[pkg]=rel
         elif parts[0]=='override' and len(parts)>=3:
@@ -45,11 +44,9 @@ with zipfile.ZipFile(xpi) as z:
             if m:
                 pkg, rel=m.groups()
                 rootrel=skin_roots.get(pkg)
-                # noiawin is registered before all generated overrides.
                 assert rootrel is not None, ('unregistered override target package',pkg,target)
                 assert rootrel+rel in names, ('missing override target',target,rootrel+rel)
 
-    # Optimized architecture invariants.
     assert not any(n.startswith('linux/') for n in names)
     assert not any(n.startswith('windows/') for n in names)
     assert any(n.startswith('core/messenger/') for n in names)
@@ -62,4 +59,4 @@ with zipfile.ZipFile(xpi) as z:
 print('XPI verification OK')
 PY2
 
-(cd "$ROOT/dist" && sha256sum -c "Noia_Epyrus_1.0.0rc1.sha256")
+(cd "$ROOT/dist" && sha256sum -c "Noia_Epyrus_1.0.0rc2.sha256")

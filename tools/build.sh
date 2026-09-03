@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SRC="$ROOT/src"
 DIST="$ROOT/dist"
 WORK="$ROOT/.build"
-NAME="Noia_Epyrus_1.0.0rc1"
+NAME="Noia_Epyrus_1.0.0rc2"
 SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-1788134400}"
 
 rm -rf "$WORK"

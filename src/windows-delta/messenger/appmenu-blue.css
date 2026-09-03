@@ -1,0 +1,27 @@
+/* Noia Epyrus 1.0.0rc2: Pale Moon-style blue Windows AppMenu.
+ * Loaded as a Windows-only document stylesheet so the native Epyrus
+ * titlebar/AppMenu geometry remains untouched. */
+#appmenu-button {
+  background-image: linear-gradient(rgb(82, 182, 247), rgb(10, 98, 215) 95%) !important;
+  border-color: rgba(6, 42, 83, 0.9) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset,
+              0 0 2px 1px rgba(120, 210, 255, 0.28) inset !important;
+}
+
+#appmenu-button:hover:not(:active):not([open]) {
+  background-image: radial-gradient(farthest-side at bottom, rgba(89, 240, 252, 0.5) 10%, rgba(89, 240, 252, 0) 70%),
+                    radial-gradient(farthest-side at bottom, rgb(0, 133, 236), rgba(172, 229, 255, 0)),
+                    linear-gradient(rgb(69, 170, 246), rgb(0, 74, 209) 95%) !important;
+  border-color: rgba(6, 42, 83, 0.95) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28) inset,
+              0 0 2px 1px rgba(120, 220, 255, 0.45) inset,
+              0 -1px 0 rgba(110, 205, 255, 0.25) inset !important;
+}
+
+#appmenu-button:hover:active,
+#appmenu-button[open] {
+  background-image: linear-gradient(rgb(49, 148, 229), rgb(0, 69, 184) 95%) !important;
+  border-color: rgba(4, 32, 68, 0.95) !important;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4) inset,
+              0 1px 1px rgba(0, 0, 0, 0.25) inset !important;
+}

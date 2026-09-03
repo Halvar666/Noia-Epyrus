@@ -22,17 +22,17 @@ From the repository root:
 
 Output:
 
-- `dist/Noia_Epyrus_1.0.0rc1.xpi`
-- `dist/Noia_Epyrus_1.0.0rc1.sha256`
+- `dist/Noia_Epyrus_1.0.0rc2.xpi`
+- `dist/Noia_Epyrus_1.0.0rc2.sha256`
 
-The helper uses a fixed default `SOURCE_DATE_EPOCH` for the rc1 release so repeated builds from identical source content produce stable archive timestamps. Override `SOURCE_DATE_EPOCH` if needed.
+The helper uses a fixed default `SOURCE_DATE_EPOCH` for the rc2 release so repeated builds from identical source content produce stable archive timestamps. Override `SOURCE_DATE_EPOCH` if needed.
 
-## Reference rc1 artifact
+## Reference rc2 artifact
 
 A clean build from this source tree must reproduce:
 
-- XPI size: **4,665,742 bytes (4.45 MiB)**
-- SHA256: `1d63ca7561ed5c4e08ce97cfa1ba375ddecc50a11da72d19f14874ecd98f0884`
+- XPI size: **4,667,623 bytes (4.45 MiB)**
+- SHA256: `945213e6071bf5c687310451913b77290d12fcc1b44b2e4738658369625de05e`
 
 If either value differs, verify that the compact `core/` + `windows-delta/` source layout is being built and that no older full `linux/` / `windows/` trees were reintroduced.
 

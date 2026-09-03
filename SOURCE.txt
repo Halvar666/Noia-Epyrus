@@ -1,8 +1,8 @@
 Noia Epyrus source availability
 ===============================
 
-Source code for Noia Epyrus 1.0.0rc1 is distributed alongside the release as
-Noia_Epyrus_1.0.0rc1_source.zip and is licensed under Mozilla Public License
+Source code for Noia Epyrus 1.0.0rc2 is distributed alongside the release as
+Noia_Epyrus_1.0.0rc2_source.zip and is licensed under Mozilla Public License
 Version 1.1 for the covered derivative work.
 
 The project is derived from Noia Fox 3.1.5 by David Vincent and the native

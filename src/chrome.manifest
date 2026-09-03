@@ -7,9 +7,10 @@ skin messenger-newsblog noiaepyrus core/messenger-newsblog/
 skin calendar noiaepyrus core/calendar/
 skin lightning noiaepyrus core/lightning/
 skin noiawin noiaepyrus windows-delta/ os=WINNT
+style chrome://messenger/content/messenger.xul chrome://noiawin/skin/messenger/appmenu-blue.css os=WINNT
 
 # Windows-only deltas. The shared core is the tested Linux tree; these
-# overrides reconstruct the tested rc1 Windows tree without duplicating it.
+# overrides reconstruct the tested Windows tree without duplicating it.
 override chrome://global/skin/console/itemSelected.png chrome://noiawin/skin/global/console/itemSelected.png os=WINNT
 override chrome://global/skin/icons/close-inverted-win7.png chrome://noiawin/skin/global/icons/close-inverted-win7.png os=WINNT
 override chrome://global/skin/icons/close-inverted-win7@2x.png chrome://noiawin/skin/global/icons/close-inverted-win7@2x.png os=WINNT
